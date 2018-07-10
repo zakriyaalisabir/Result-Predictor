@@ -1,0 +1,18 @@
+{
+  "name": "resultpredictor",
+  "version": "1.0.0",
+  "description": "result Predictor web app using patterns analysis and data extraction.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "resultPredictor"
+  ],
+  "author": "Zakriya Ali Sabir",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
