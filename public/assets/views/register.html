@@ -9,36 +9,36 @@
                     <div class="login-group">
                         <div class="form-group">
                             <label for="reg_username" class="sr-only">Email address</label>
-                            <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
+                            <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username" ng-model="username">
                         </div>
                         <div class="form-group">
                             <label for="reg_password" class="sr-only">Password</label>
-                            <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
+                            <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password" ng-model="password">
                         </div>
                         <div class="form-group">
                             <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-                            <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
+                            <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password" ng-model="confirmPassword">
                         </div>
                         
                         <div class="form-group">
                             <label for="reg_email" class="sr-only">Email</label>
-                            <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
+                            <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email" ng-model="email">
                         </div>
                         <div class="form-group">
                             <label for="reg_fullname" class="sr-only">Full Name</label>
-                            <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
+                            <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name" ng-model="name">
                         </div>
                         
                         <div class="form-group login-group-checkbox">
-                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
+                            <input type="radio" class="" name="reg_gender" id="male" placeholder="username" ng-model="gender" value="male">
                             <label for="male">male</label>
                             
-                            <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
+                            <input type="radio" class="" name="reg_gender" id="female" placeholder="username" ng-model="gender" value="female">
                             <label for="female">female</label>
                         </div>
                         
                         <div class="form-group login-group-checkbox">
-                            <input type="checkbox" class="" id="reg_agree" name="reg_agree">
+                            <input type="checkbox" class="" id="reg_agree" name="reg_agree" ng-model="agree">
                             <label for="reg_agree">I agree that i have provided an accurate information and upon false provision i will be resposible for any misdeed and termination of account.</a></label>
                         </div>
                     </div>
