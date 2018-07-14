@@ -1,5 +1,8 @@
 var app = angular.module('myApp',['ngRoute','firebase']);
 
+var statusLogin=false;
+var logoutStatus=false;
+
 app.config(['$qProvider','$routeProvider','$locationProvider',function($qProvider,$routeProvider,$locationProvider){
     $routeProvider.when('/',{
         url:'/login',
@@ -18,9 +21,9 @@ app.config(['$qProvider','$routeProvider','$locationProvider',function($qProvide
         templateUrl:'/assets/views/dashboard.html',
         controller:'dashboardCtrl'
     }).otherwise({
-        url:'/error',
+        // url:'/error',
         // templateUrl:'assets/views/error.html',
-        redirectTo:'/assets/views/error.html'
+        redirectTo:'/'
     });
     $locationProvider.html5Mode({
         enabled:true,
@@ -41,7 +44,7 @@ app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval){
         };
 
         console.log('login is clicked');
-        var statusLogin=false;
+
         firebase.auth().signInWithEmailAndPassword(e,p).then(function(user){
             if(user){
                 // $location.path('/register');
@@ -69,9 +72,6 @@ app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval){
 
     }
 
-    // $scope.goto()=function(loc){
-    //     $location.path('/'+loc)
-    // }
 });
 
 
@@ -139,29 +139,34 @@ app.controller('registerCtrl',function($scope,$location,$firebaseObject){
                 return;
             }
         }
-    }
-    // $scope.goto()=function(loc){
-    //     $location.path('/'+loc)
-    // }
+    };
 });
 
-app.controller('forgetPasswordCtrl',function($scope,$location){
+app.controller('forgetPasswordCtrl',function($scope,$location,$firebaseObject){
     console.log('hello from fgCtrl controller');
     
     $scope.fg=function(){
         console.log('fg is clicked');
-    }
-    // $scope.goto()=function(loc){
-    //     $location.path('/'+loc)
-    // }
-});
-app.controller('dashboardCtrl',function($scope,$location){
-    console.log('hello from dashboardCtrl controller');
+    };
     
-    // $scope.fg=function(){
-    //     console.log('fg is clicked');
-    // }
-    // $scope.goto()=function(loc){
-    //     $location.path('/'+loc)
-    // }
+});
+app.controller('dashboardCtrl',function($scope,$location,$interval,$firebaseObject){
+    console.log('hello from dashboardCtrl controller');
+
+    $scope.logout=function(){
+        console.log('logout is clicked');
+        firebase.auth().signOut().then(function(){
+            logoutStatus=true;
+        }).catch(function(err){
+            console.log(err);
+            alert(err.message);
+        });
+    };
+    $interval(function(){
+        if(logoutStatus){
+            logoutStatus=false;
+            statusLogin=false;
+            $location.path('/login');
+        }
+    },1);
 });
