@@ -145,8 +145,23 @@ app.controller('registerCtrl',function($scope,$location,$firebaseObject){
 app.controller('forgetPasswordCtrl',function($scope,$location,$firebaseObject){
     console.log('hello from fgCtrl controller');
     
-    $scope.fg=function(){
-        console.log('fg is clicked');
+    $scope.fpEmail=function(){
+        console.log('fpEmail is clicked');
+        var email=$scope.fp_email;
+        console.log(email);
+        if(email==='' || email=='' || email==null){
+            alert('invalid email address');
+            return;
+        }else{
+            firebase.auth().sendPasswordResetEmail(email).then(function(){
+                console.log('email sent');
+            }).then(function(){
+                $scope.$apply;
+            }).catch(function(err){
+                console.log(err);
+                alert(err.message)
+            });
+        }
     };
     
 });
