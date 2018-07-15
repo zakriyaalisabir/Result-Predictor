@@ -5,14 +5,18 @@
         </div>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active" role="presentation"><a href="">My Performance History</a></li>
-                <li role="presentation"><a href="" >My Performance Analytics</a></li>
-                <li role="presentation"><a href="">My Result Predictor</a></li>
+                <li class="active" role="presentation"><a href="">My History</a></li>
+                <li role="presentation"><a href="" >My Analytics</a></li>
+                <li role="presentation"><a href="">My Predictor</a></li>
+                <li role="presentation"><a href="">Settings</a></li>
                 <li role="presentation"><a href="" style="color:#0000FF;" ng-click="logout()">Log out</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<div>
+<div class="container " ng-app="dashboardApp">
+    <div ng-include="/assets/views/dashboardViews/myHistory.html">
+
+    </div>
 
 </div>
