@@ -20,6 +20,22 @@ app.config(['$qProvider','$routeProvider','$locationProvider',function($qProvide
         url:'/dashboard',
         templateUrl:'/assets/views/dashboard.html',
         controller:'dashboardCtrl'
+    }).when('/myHistory',{
+        url:'/myHistory',
+        templateUrl:'/assets/views/dashboardViews/myHistory.html',
+        controller:'myHistoryCtrl'
+    }).when('/myAnalytics',{
+        url:'/myAnalytics',
+        templateUrl:'/assets/views/dashboardViews/myAnalytics.html',
+        controller:'myAnalyticsCtrl'
+    }).when('/myPredictor',{
+        url:'/myPredictor',
+        templateUrl:'/assets/views/dashboardViews/myPredictor.html',
+        controller:'myPredictorCtrl'
+    }).when('/settings',{
+        url:'/settings',
+        templateUrl:'/assets/views/dashboardViews/settings.html',
+        controller:'settingsCtrl'
     }).otherwise({
         // url:'/error',
         // templateUrl:'assets/views/error.html',
@@ -61,6 +77,7 @@ app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval){
         $interval(function(){
             if(statusLogin){
                 $location.path('/dashboard');
+                $scope.navVariable=false;
             }
         },1);
 
@@ -184,4 +201,28 @@ app.controller('dashboardCtrl',function($scope,$location,$interval,$firebaseObje
             $location.path('/login');
         }
     },1);
+});
+
+app.controller('navCtrl',function($scope){
+    console.log('nav controller loaded');
+    $scope.navVariable=true;
+    if(statusLogin){
+        $scope.navVariable=false;
+    }
+});
+
+app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interval){
+    console.log('hello from myHistory controller');
+});
+
+app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$interval){
+    console.log('hello from myAnalyticsCtrl');
+});
+
+app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$interval){
+    console.log('hello from myPredictorCtrl');
+});
+
+app.controller('settingsCtrl',function($scope,$location,$firebaseObject,$interval){
+    console.log('hello from settingsCtrl ');
 });

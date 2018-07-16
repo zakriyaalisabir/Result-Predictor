@@ -30,6 +30,3 @@ app.config(['$qProvider','$routeProvider','$locationProvider',function($qProvide
 }]);
 
 
-app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interval){
-    console.log('hello from myHistory controller');
-});
