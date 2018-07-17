@@ -25,25 +25,22 @@
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-database.js"></script>
 
-    <!-- Bootstarp 4.0 -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-
     <link rel="stylesheet" href="assets/css/index.css">
 
 </head>
-<body>
+<body ng-controller="navCtrl">
 
-    <nav class="navbar navbar-default" ng-controller="navCtrl" ng-hide="navVariable">
+    <nav class="navbar navbar-default" ng-hide="navVariable">
         <div class="container-fluid">
-            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#"><strong>Result Predictor</strong></a>
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="" ng-click="myProfile()"><strong>Result Predictor</strong></a>
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active" role="presentation"><a href="">My History</a></li>
-                    <li role="presentation"><a href="" >My Analytics</a></li>
-                    <li role="presentation"><a href="">My Predictor</a></li>
-                    <li role="presentation"><a href="">Settings</a></li>
+                    <li role="presentation"><a href="" ng-click="history()">My History</a></li>
+                    <li role="presentation"><a href="" ng-click="analytics()">My Analytics</a></li>
+                    <li role="presentation"><a href="" ng-click="predictor()">My Predictor</a></li>
+                    <li role="presentation"><a href="" ng-click="settings()">Settings</a></li>
                     <li role="presentation"><a href="" style="color:#0000FF;" ng-click="logout()">Log out</a></li>
                 </ul>
             </div>
@@ -63,13 +60,7 @@
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
-    <!--Bootstrap 4.0  -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-
     <script src="assets/js/controller/controller.js"></script>
-    <!-- <script src="assets/js/controller/dashboardController.js"></script> -->
 
 </body>
 </html>

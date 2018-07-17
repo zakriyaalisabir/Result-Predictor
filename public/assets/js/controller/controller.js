@@ -1,7 +1,8 @@
 var app = angular.module('myApp',['ngRoute','firebase']);
 
-var statusLogin=false;
-var logoutStatus=false;
+var statusLogin=false;//initial login token
+var logoutStatus=true;//initial logout token
+var myPath='/myProfile';//for passing value to $location.path(myPath)
 
 app.config(['$qProvider','$routeProvider','$locationProvider',function($qProvider,$routeProvider,$locationProvider){
     $routeProvider.when('/',{
@@ -16,14 +17,14 @@ app.config(['$qProvider','$routeProvider','$locationProvider',function($qProvide
         url:'/forgetPassword',
         templateUrl:'/assets/views/forgetPassword.html',
         controller:'forgetPasswordCtrl'
-    }).when('/dashboard',{
-        url:'/dashboard',
-        templateUrl:'/assets/views/dashboard.html',
-        controller:'dashboardCtrl'
     }).when('/myHistory',{
         url:'/myHistory',
         templateUrl:'/assets/views/dashboardViews/myHistory.html',
         controller:'myHistoryCtrl'
+    }).when('/myProfile',{
+        url:'/myProfile',
+        templateUrl:'/assets/views/dashboardViews/myProfile.html',
+        controller:'myProfileCtrl'
     }).when('/myAnalytics',{
         url:'/myAnalytics',
         templateUrl:'/assets/views/dashboardViews/myAnalytics.html',
@@ -48,9 +49,14 @@ app.config(['$qProvider','$routeProvider','$locationProvider',function($qProvide
     $qProvider.errorOnUnhandledRejections(false);
 }]);
 
-app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval){
+app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval,$rootScope){
     console.log('hello from login controller');
    
+    $scope.$apply;//for updating variable to initial values
+    $rootScope.navVariable=true;
+    $location.path();//make current url as path of browser window
+    $location.replace();//prevent user from going back to app by setting the above path as previous
+
     $scope.login=function(){
         var e=$scope.email;
         var p=$scope.password;
@@ -75,20 +81,16 @@ app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval){
         });
 
         $interval(function(){
-            if(statusLogin){
-                $location.path('/dashboard');
-                $scope.navVariable=false;
+            if(statusLogin && logoutStatus){
+                // $location.path('/myProfile');
+                myPath='/myProfile';
+                logoutStatus=false;
+                $location.path(myPath);
+                $rootScope.navVariable=false;
+                $scope.$apply;
             }
         },1);
-
-        // firebase.auth().onAuthStateChanged(function(user){
-        //     if(user){
-        //         $location.path('/dashboard');
-        //     }
-        // });
-
     }
-
 });
 
 
@@ -182,10 +184,14 @@ app.controller('forgetPasswordCtrl',function($scope,$location,$firebaseObject){
     };
     
 });
-app.controller('dashboardCtrl',function($scope,$location,$interval,$firebaseObject){
-    console.log('hello from dashboardCtrl controller');
 
-    $scope.logout=function(){
+//initializing hidden navbar now
+app.controller('navCtrl',function($rootScope,$scope,$location,$interval){
+    console.log('nav controller loaded');
+    
+    $scope.navVariable=true;//thats mean nav bar is not displayed {ng-hide=true}
+    
+    $rootScope.logout=function(){
         console.log('logout is clicked');
         firebase.auth().signOut().then(function(){
             logoutStatus=true;
@@ -194,35 +200,117 @@ app.controller('dashboardCtrl',function($scope,$location,$interval,$firebaseObje
             alert(err.message);
         });
     };
+
     $interval(function(){
+        if(statusLogin ){
+            $scope.navVariable=false;
+        }
+
         if(logoutStatus){
-            logoutStatus=false;
             statusLogin=false;
-            $location.path('/login');
+            $scope.navVariable=true;
+            myPath='/';
+            // $location.path('/login');
+            $location.path(myPath);
+            $location.replace();//for setting the current url to stop user from going back to app after logout
         }
     },1);
-});
 
-app.controller('navCtrl',function($scope){
-    console.log('nav controller loaded');
-    $scope.navVariable=true;
-    if(statusLogin){
-        $scope.navVariable=false;
+    $scope.history=function(){
+        // $location.path('/myHistory');
+        myPath='/myHistory';
+        $location.path(myPath);
+    }
+    
+    $scope.analytics=function(){
+        // $location.path('/myAnalytics');
+        myPath='/myAnalytics';
+        $location.path(myPath);
+    }
+    
+    $scope.predictor=function(){
+        // $location.path('/myPredictor');
+        myPath='/myPredictor';
+        $location.path(myPath);
+    }
+    
+    $scope.settings=function(){
+        // $location.path('/settings');
+        myPath='/settings';
+        $location.path(myPath);
+    }
+    
+    $scope.myProfile=function(){
+        // $location.path('/settings');
+        myPath='/myProfile';
+        $location.path(myPath);
     }
 });
 
 app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interval){
+
     console.log('hello from myHistory controller');
+    $interval(function(){
+        if(logoutStatus){
+            // $location.path('/myProfile');
+            myPath='/'
+            $location.path(myPath);
+            $location.replace();
+            $scope.$apply;
+        }
+    },1);
 });
 
 app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$interval){
     console.log('hello from myAnalyticsCtrl');
+    $interval(function(){
+        if(logoutStatus){
+            // $location.path('/myProfile');
+            myPath='/'
+            $location.path(myPath);
+            $location.replace();
+            $scope.$apply;
+        }
+    },1);
+});
+
+app.controller('myProfileCtrl',function($rootScope,$scope,$location,$firebaseObject,$interval){
+    console.log('hello from myProfileCtrl');
+    $rootScope.navVariable=false;//now {ng-hide=false}
+    $scope.$apply;
+    $interval(function(){
+        if(logoutStatus){
+            // $location.path('/myProfile');
+            myPath='/'
+            $location.path(myPath);
+            $location.replace();
+            $scope.$apply;
+        }
+    },1);
 });
 
 app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$interval){
     console.log('hello from myPredictorCtrl');
+    $interval(function(){
+        if(logoutStatus){
+            // $location.path('/myProfile');
+            myPath='/'
+            $location.path(myPath);
+            $location.replace();
+            $scope.$apply;
+        }
+    },1);
 });
 
 app.controller('settingsCtrl',function($scope,$location,$firebaseObject,$interval){
     console.log('hello from settingsCtrl ');
+    $interval(function(){
+        if(logoutStatus){
+            // $location.path('/myProfile');
+            myPath='/'
+            $location.path(myPath);
+            $location.replace();
+            $scope.$apply;
+        }
+    },1);
 });
