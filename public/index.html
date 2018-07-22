@@ -28,9 +28,9 @@
     <link rel="stylesheet" href="assets/css/index.css">
 
 </head>
-<body ng-controller="navCtrl">
+<body style="padding-top:50px;" >
 
-    <nav class="navbar navbar-default" ng-hide="navVariable">
+    <nav class="navbar navbar-default navbar-fixed-top" ng-controller="navCtrl" ng-hide="navVariable">
         <div class="container-fluid">
             <div class="navbar-header"><a class="navbar-brand navbar-link" href="" ng-click="myProfile()"><strong>Result Predictor</strong></a>
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
@@ -40,7 +40,6 @@
                     <li role="presentation"><a href="" ng-click="history()">My History</a></li>
                     <li role="presentation"><a href="" ng-click="analytics()">My Analytics</a></li>
                     <li role="presentation"><a href="" ng-click="predictor()">My Predictor</a></li>
-                    <li role="presentation"><a href="" ng-click="settings()">Settings</a></li>
                     <li role="presentation"><a href="" style="color:#0000FF;" ng-click="logout()">Log out</a></li>
                 </ul>
             </div>
@@ -49,17 +48,32 @@
 
     <div ng-view></div>
     
+    <!-- jQuery -->
     <script src="assets/js/jQuery/jquery.min.js"></script>
+    
+    <!-- angular -->
     <script src="assets/js/angular/angular.js"></script>
     <script src="assets/js/angular/angular-route.js"></script>
     <script src="assets/js/angular/angular-animate.js"></script>
     
+    <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <script src="assets/js/firebase/firebase.js"></script>
 
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
+    <!-- fusion charts -->
+    <script src="assets/js/charts/fusioncharts.js"></script>
+    <script src="assets/js/charts/fusioncharts.theme.fint.js"></script> 
+    <script src="assets/js/charts/fusioncharts.charts.js"></script>
+    <script src="assets/js/charts/angular-fusioncharts.js"></script>
+
+    <!-- zing-charts -->
+    <!-- <script src="../../node_modules/zingchart/client/zingchart.min.js" type="text/html"></script>
+    <script src="../../node_modules/zingchart-angularjs/src/zingchart-angularjs.js" type="text/html"></script> -->
+
+    <!-- controller -->
     <script src="assets/js/controller/controller.js"></script>
 
 </body>
