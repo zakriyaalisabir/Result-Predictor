@@ -1300,75 +1300,75 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         e5:obj11.english,
         e5:obj12.english   
     };
-    var english={
-        e5:obj5.english,
-        e5:obj6.english,
-        e5:obj7.english,
-        e5:obj8.english,
-        e5:obj9.english,
-        e5:obj10.english,
-        e5:obj11.english,
-        e5:obj12.english   
+    var urdu={
+        e5:obj5.urdu,
+        e5:obj6.urdu,
+        e5:obj7.urdu,
+        e5:obj8.urdu,
+        e5:obj9.urdu,
+        e5:obj10.urdu,
+        e5:obj11.urdu,
+        e5:obj12.urdu   
     };
-    var english={
-        e5:obj5.english,
-        e5:obj6.english,
-        e5:obj7.english,
-        e5:obj8.english,
-        e5:obj9.english,
-        e5:obj10.english,
-        e5:obj11.english,
-        e5:obj12.english   
+    var maths={
+        e5:obj5.maths,
+        e5:obj6.maths,
+        e5:obj7.maths,
+        e5:obj8.maths,
+        e5:obj9.maths,
+        e5:obj10.maths,
+        e5:obj11.maths,
+        e5:obj12.maths   
     };
-    var english={
-        e5:obj5.english,
-        e5:obj6.english,
-        e5:obj7.english,
-        e5:obj8.english,
-        e5:obj9.english,
-        e5:obj10.english,
-        e5:obj11.english,
-        e5:obj12.english   
+    var science={
+        e5:obj5.science,
+        e5:obj6.science,
+        e5:obj7.science,
+        e5:obj8.science,
+        e5:obj9.science,
+        e5:obj10.science,
+        e5:obj11.science,
+        e5:obj12.science   
     };
-    var english={
-        e5:obj5.english,
-        e5:obj6.english,
-        e5:obj7.english,
-        e5:obj8.english,
-        e5:obj9.english,
-        e5:obj10.english,
-        e5:obj11.english,
-        e5:obj12.english   
+    var physics={
+        e5:obj5.physics,
+        e5:obj6.physics,
+        e5:obj7.physics,
+        e5:obj8.physics,
+        e5:obj9.physics,
+        e5:obj10.physics,
+        e5:obj11.physics,
+        e5:obj12.physics   
     };
-    var english={
-        e5:obj5.english,
-        e5:obj6.english,
-        e5:obj7.english,
-        e5:obj8.english,
-        e5:obj9.english,
-        e5:obj10.english,
-        e5:obj11.english,
-        e5:obj12.english   
+    var biology={
+        e5:obj5.biology,
+        e5:obj6.biology,
+        e5:obj7.biology,
+        e5:obj8.biology,
+        e5:obj9.biology,
+        e5:obj10.biology,
+        e5:obj11.biology,
+        e5:obj12.biology   
     };
-    var english={
-        e5:obj5.english,
-        e5:obj6.english,
-        e5:obj7.english,
-        e5:obj8.english,
-        e5:obj9.english,
-        e5:obj10.english,
-        e5:obj11.english,
-        e5:obj12.english   
+    var chemistry={
+        e5:obj5.chemistry,
+        e5:obj6.chemistry,
+        e5:obj7.chemistry,
+        e5:obj8.chemistry,
+        e5:obj9.chemistry,
+        e5:obj10.chemistry,
+        e5:obj11.chemistry,
+        e5:obj12.chemistry   
     };
-    var english={
-        e5:obj5.english,
-        e5:obj6.english,
-        e5:obj7.english,
-        e5:obj8.english,
-        e5:obj9.english,
-        e5:obj10.english,
-        e5:obj11.english,
-        e5:obj12.english   
+    var islamiat={
+        e5:obj5.islamiat,
+        e5:obj6.islamiat,
+        e5:obj7.islamiat,
+        e5:obj8.islamiat,
+        e5:obj9.islamiat,
+        e5:obj10.islamiat,
+        e5:obj11.islamiat,
+        e5:obj12.islamiat   
     };
     var computer={
         e5:obj5.computer,
@@ -1379,6 +1379,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         e5:obj10.computer,
         e5:obj11.computer,
         e5:obj12.computer   
+    };
+    var pakistanStudies={
+        e5:obj5.pakistanStudies,
+        e5:obj6.pakistanStudies,
+        e5:obj7.pakistanStudies,
+        e5:obj8.pakistanStudies,
+        e5:obj9.pakistanStudies,
+        e5:obj10.pakistanStudies,
+        e5:obj11.pakistanStudies,
+        e5:obj12.pakistanStudies   
     };
     
     $interval(function(){

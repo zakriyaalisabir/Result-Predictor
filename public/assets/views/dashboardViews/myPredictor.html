@@ -2,7 +2,23 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 ">
-                my predictor
+                    <div class="form-group">
+                        <h2 style="color:#FFFFFF;text-align:center;">Select subject to predict the result.</h2>
+                        <select class="form-control" ng-model="selectedSubject">
+                            <option value="english">English</option>
+                            <option value="urdu">Urdu</option>
+                            <option value="maths">Maths</option>
+                            <option value="science">Science</option>
+                            <option value="biology">Biology</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="pkstd">Pakistan Studies</option>
+                            <option value="computer">Computer</option>
+                            <option value="islamiat">Islamiat</option>
+                        </select>
+                        
+                        <button type="submit" class="btn btn-primary" ng-click="predictMyResult()">Predict Marks</button>
+                    </div>
             </div>
         </div>
     </div>
