@@ -467,7 +467,7 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
     }
     
     $interval(function(){
-        if(!statusLogin && logoutStatus){
+        if(!statusLogin){
             // $location.path('/myProfile');
             myPath='/'
             $location.path(myPath);
@@ -1226,7 +1226,7 @@ app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$fire
     },1000);//1 second
 
     $interval(function(){
-        if(!statusLogin && logoutStatus){
+        if(!statusLogin ){
             // $location.path('/myProfile');
             myPath='/'
             $location.path(myPath);
@@ -1249,7 +1249,7 @@ app.controller('myProfileCtrl',function($rootScope,$scope,$location,$firebaseObj
     $scope.user=obj;
     
     $interval(function(){
-        if(!statusLogin && logoutStatus){
+        if(!statusLogin){
             // $location.path('/myProfile');
             myPath='/'
             $location.path(myPath);
@@ -1262,9 +1262,127 @@ app.controller('myProfileCtrl',function($rootScope,$scope,$location,$firebaseObj
 app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$interval){
     console.log('hello from myPredictorCtrl');
     $location.replace();
+
+    var uid=firebase.auth().currentUser.uid;//for getting uid
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class5');
+    var obj5=$firebaseObject(ref);//for converting firebase object to json
+    // console.log(obj5);
+
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class6');
+    var obj6=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class7');
+    var obj7=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class8');
+    var obj8=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class9');
+    var obj9=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class10');
+    var obj10=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class11');
+    var obj11=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class12');
+    var obj12=$firebaseObject(ref);
+
+    var english={
+        e5:obj5.english,
+        e5:obj6.english,
+        e5:obj7.english,
+        e5:obj8.english,
+        e5:obj9.english,
+        e5:obj10.english,
+        e5:obj11.english,
+        e5:obj12.english   
+    };
+    var english={
+        e5:obj5.english,
+        e5:obj6.english,
+        e5:obj7.english,
+        e5:obj8.english,
+        e5:obj9.english,
+        e5:obj10.english,
+        e5:obj11.english,
+        e5:obj12.english   
+    };
+    var english={
+        e5:obj5.english,
+        e5:obj6.english,
+        e5:obj7.english,
+        e5:obj8.english,
+        e5:obj9.english,
+        e5:obj10.english,
+        e5:obj11.english,
+        e5:obj12.english   
+    };
+    var english={
+        e5:obj5.english,
+        e5:obj6.english,
+        e5:obj7.english,
+        e5:obj8.english,
+        e5:obj9.english,
+        e5:obj10.english,
+        e5:obj11.english,
+        e5:obj12.english   
+    };
+    var english={
+        e5:obj5.english,
+        e5:obj6.english,
+        e5:obj7.english,
+        e5:obj8.english,
+        e5:obj9.english,
+        e5:obj10.english,
+        e5:obj11.english,
+        e5:obj12.english   
+    };
+    var english={
+        e5:obj5.english,
+        e5:obj6.english,
+        e5:obj7.english,
+        e5:obj8.english,
+        e5:obj9.english,
+        e5:obj10.english,
+        e5:obj11.english,
+        e5:obj12.english   
+    };
+    var english={
+        e5:obj5.english,
+        e5:obj6.english,
+        e5:obj7.english,
+        e5:obj8.english,
+        e5:obj9.english,
+        e5:obj10.english,
+        e5:obj11.english,
+        e5:obj12.english   
+    };
+    var english={
+        e5:obj5.english,
+        e5:obj6.english,
+        e5:obj7.english,
+        e5:obj8.english,
+        e5:obj9.english,
+        e5:obj10.english,
+        e5:obj11.english,
+        e5:obj12.english   
+    };
+    var computer={
+        e5:obj5.computer,
+        e5:obj6.computer,
+        e5:obj7.computer,
+        e5:obj8.computer,
+        e5:obj9.computer,
+        e5:obj10.computer,
+        e5:obj11.computer,
+        e5:obj12.computer   
+    };
     
     $interval(function(){
-        if(!statusLogin && logoutStatus){
+        if(!statusLogin){
             // $location.path('/myProfile');
             myPath='/'
             $location.path(myPath);
