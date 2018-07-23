@@ -632,7 +632,7 @@ app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$fire
     $scope.myDataSource8={
         chart:{
             caption:'Class 8 Results',
-            subCaption:'Total Subjects = 7',
+            subCaption:'Total Subjects = 8',
             xAxisName: "subject name",
             yAxisName: '% of marks',
             theme:"fint"
@@ -990,7 +990,7 @@ app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$fire
         $scope.myDataSource8={
             chart:{
                 caption:'Class 8 Results',
-                subCaption:'Total Subjects = 7',
+                subCaption:'Total Subjects = 8',
                 xAxisName: "subject name",
                 yAxisName: '% of marks',
                 theme:"fint"
@@ -1390,6 +1390,10 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         e5:obj11.pakistanStudies,
         e5:obj12.pakistanStudies   
     };
+
+    $scope.predictMyResult=function(){
+        console.log('selected subject = ',$scope.selectedSubject);
+    }
     
     $interval(function(){
         if(!statusLogin){
