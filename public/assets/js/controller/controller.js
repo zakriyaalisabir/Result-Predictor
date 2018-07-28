@@ -1392,7 +1392,7 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
     };
 
     $scope.predictMyResult=function(){
-        console.log('selected subject = ',$scope.selectedSubject);
+        console.log('selected level = ',$scope.selectedLevel);
     }
     
     $interval(function(){

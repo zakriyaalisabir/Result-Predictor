@@ -3,18 +3,19 @@
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 ">
                     <div class="form-group">
-                        <h2 style="color:#FFFFFF;text-align:center;">Select subject to predict the result.</h2>
-                        <select class="form-control" ng-model="selectedSubject">
-                            <option value="english">English</option>
-                            <option value="urdu">Urdu</option>
-                            <option value="maths">Maths</option>
-                            <option value="science">Science</option>
-                            <option value="biology">Biology</option>
-                            <option value="physics">Physics</option>
-                            <option value="chemistry">Chemistry</option>
-                            <option value="pkstd">Pakistan Studies</option>
-                            <option value="computer">Computer</option>
-                            <option value="islamiat">Islamiat</option>
+                        <h4 style="color:#FFFFFF;text-align:center;">Select Level Of Education.</h4>
+                        <select class="form-control" ng-model="selectedLevel">
+                            <option value="english">University</option>
+                            <option value="urdu">College</option>
+                            <option value="maths">School</option>
+                        </select>
+                        
+                        
+                        <h4 style="color:#FFFFFF;text-align:center;">Select Class.</h4>
+                        <select class="form-control" ng-model="selectedLevel">
+                            <option value="english">University</option>
+                            <option value="urdu">College</option>
+                            <option value="maths">School</option>
                         </select>
                         
                         <button type="submit" class="btn btn-primary" ng-click="predictMyResult()">Predict Marks</button>
