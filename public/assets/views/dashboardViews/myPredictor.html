@@ -3,20 +3,33 @@
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 ">
                     <div class="form-group">
+
                         <h4 style="color:#FFFFFF;text-align:center;">Select Level Of Education.</h4>
                         <select class="form-control" ng-model="selectedLevel">
-                            <option value="english">University</option>
-                            <option value="urdu">College</option>
-                            <option value="maths">School</option>
+                            <option value="university">University</option>
+                            <option value="college">College</option>
+                            <option value="school">School</option>
                         </select>
-                        
-                        
+                    
                         <h4 style="color:#FFFFFF;text-align:center;">Select Class.</h4>
-                        <select class="form-control" ng-model="selectedLevel">
-                            <option value="english">University</option>
-                            <option value="urdu">College</option>
-                            <option value="maths">School</option>
+                        <select class="form-control" ng-model="selectedClass" ng-hide="schoolLevel">
+                            <option value="9">9th</option>
+                            <option value="10">10th</option>
                         </select>
+                        <select class="form-control" ng-model="selectedClass" ng-hide="collegeLevel">
+                            <option value="11">11th</option>
+                            <option value="12">12th</option>
+                        </select>
+                        <select class="form-control" ng-model="selectedClass" ng-hide="universityLevel">
+                            <option value="1">1st</option>
+                            <option value="2">2nd</option>
+                            <option value="3">3rd</option>
+                            <option value="4">4th</option>
+                            <option value="5">5th</option>
+                            <option value="6">6th</option>
+                            <option value="7">7th</option>
+                            <option value="8">8th</option>
+                        </select><br>
                         
                         <button type="submit" class="btn btn-primary" ng-click="predictMyResult()">Predict Marks</button>
                     </div>

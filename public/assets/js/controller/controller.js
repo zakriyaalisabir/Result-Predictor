@@ -465,6 +465,143 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
 
         alert('marks of class 12 has been updated successfully');
     }
+
+    
+    $scope.semester1MarksUpload=function(){
+
+        var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester1');
+        var obj=$firebaseObject(ref);
+
+        ref.set({
+            subjectA:$scope.subject11,
+            subjectB:$scope.subject12,
+            subjectC:$scope.subject13,
+            subjectD:$scope.subject14,
+            subjectE:$scope.subject15,
+            subjectF:$scope.subject16
+        });
+
+        alert('marks of semester 1 has been updated successfully');
+    }
+    
+    $scope.semester2MarksUpload=function(){
+
+        var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester2');
+        var obj=$firebaseObject(ref);
+
+        ref.set({
+            subjectA:$scope.subject21,
+            subjectB:$scope.subject22,
+            subjectC:$scope.subject23,
+            subjectD:$scope.subject24,
+            subjectE:$scope.subject25,
+            subjectF:$scope.subject26
+        });
+
+        alert('marks of semester 2 has been updated successfully');
+    }
+    
+    $scope.semester3MarksUpload=function(){
+
+        var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester3');
+        var obj=$firebaseObject(ref);
+
+        ref.set({
+            subjectA:$scope.subject31,
+            subjectB:$scope.subject32,
+            subjectC:$scope.subject33,
+            subjectD:$scope.subject34,
+            subjectE:$scope.subject35,
+            subjectF:$scope.subject36
+        });
+
+        alert('marks of semester 3 has been updated successfully');
+    }
+    
+    $scope.semester4MarksUpload=function(){
+
+        var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester4');
+        var obj=$firebaseObject(ref);
+
+        ref.set({
+            subjectA:$scope.subject41,
+            subjectB:$scope.subject42,
+            subjectC:$scope.subject43,
+            subjectD:$scope.subject44,
+            subjectE:$scope.subject45,
+            subjectF:$scope.subject46
+        });
+
+        alert('marks of semester 4 has been updated successfully');
+    }
+    
+    $scope.semester5MarksUpload=function(){
+
+        var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester5');
+        var obj=$firebaseObject(ref);
+
+        ref.set({
+            subjectA:$scope.subject51,
+            subjectB:$scope.subject52,
+            subjectC:$scope.subject53,
+            subjectD:$scope.subject54,
+            subjectE:$scope.subject55,
+            subjectF:$scope.subject56
+        });
+
+        alert('marks of semester 5 has been updated successfully');
+    }
+    
+    $scope.semester6MarksUpload=function(){
+
+        var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester6');
+        var obj=$firebaseObject(ref);
+
+        ref.set({
+            subjectA:$scope.subject61,
+            subjectB:$scope.subject62,
+            subjectC:$scope.subject63,
+            subjectD:$scope.subject64,
+            subjectE:$scope.subject65,
+            subjectF:$scope.subject66
+        });
+
+        alert('marks of semester 6 has been updated successfully');
+    }
+    
+    $scope.semester7MarksUpload=function(){
+
+        var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester7');
+        var obj=$firebaseObject(ref);
+
+        ref.set({
+            subjectA:$scope.subject71,
+            subjectB:$scope.subject72,
+            subjectC:$scope.subject73,
+            subjectD:$scope.subject74,
+            subjectE:$scope.subject75,
+            subjectF:$scope.subject76
+        });
+
+        alert('marks of semester 7 has been updated successfully');
+    }
+    
+    $scope.semester8MarksUpload=function(){
+
+        var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester8');
+        var obj=$firebaseObject(ref);
+
+        ref.set({
+            subjectA:$scope.subject81,
+            subjectB:$scope.subject82,
+            subjectC:$scope.subject83,
+            subjectD:$scope.subject84,
+            subjectE:$scope.subject85,
+            subjectF:$scope.subject86
+        });
+
+        alert('marks of semester 8 has been updated successfully');
+    }
     
     $interval(function(){
         if(!statusLogin){
@@ -507,6 +644,30 @@ app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$fire
     
     var ref=firebase.database().ref().child('marksHistory').child(uid).child('class12');
     var obj12=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester1');
+    var sem1=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester2');
+    var sem2=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester3');
+    var sem3=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester4');
+    var sem4=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester5');
+    var sem5=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester6');
+    var sem6=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester7');
+    var sem7=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester8');
+    var sem8=$firebaseObject(ref);
 
     $scope.myDataSource5={
         chart:{
@@ -861,6 +1022,294 @@ app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$fire
             {
                 label:'computer',
                 value:obj12.computer
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem1={
+        chart:{
+            caption:"Semester 1 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem1.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem1.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem1.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem1.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem1.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem1.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem2={
+        chart:{
+            caption:"Semester 2 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem2.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem2.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem2.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem2.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem2.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem2.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem3={
+        chart:{
+            caption:"Semester 3 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem3.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem3.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem3.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem3.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem3.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem3.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem4={
+        chart:{
+            caption:"Semester 4 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem4.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem4.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem4.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem4.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem4.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem4.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem5={
+        chart:{
+            caption:"Semester 5 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem5.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem5.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem5.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem5.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem5.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem5.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem6={
+        chart:{
+            caption:"Semester 6 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem6.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem6.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem6.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem6.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem6.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem6.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem7={
+        chart:{
+            caption:"Semester 7 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem7.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem7.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem7.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem7.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem7.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem7.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem8={
+        chart:{
+            caption:"Semester 8 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem8.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem8.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem8.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem8.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem8.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem8.subjectF
             }
         ]
     };
@@ -1222,6 +1671,294 @@ app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$fire
                 }
             ]
         };
+        
+        $scope.myDataSourceSem1={
+            chart:{
+                caption:"Semester 1 Results",
+                subCaption:"Total Subjects = 6",
+                xAxisName: "subject name",
+                yAxisName: "% of marks",
+                theme:"fint"
+            },
+            data:[
+                {
+                    label:'subjectA',
+                    value:sem1.subjectA
+                },
+                {
+                    label:'subjectB',
+                    value:sem1.subjectB
+                },
+                {
+                    label:'subjectC',
+                    value:sem1.subjectC
+                },
+                {
+                    label:'subjectD',
+                    value:sem1.subjectD
+                },
+                {
+                    label:'subjectE',
+                    value:sem1.subjectE
+                },
+                {
+                    label:'subjectF',
+                    value:sem1.subjectF
+                }
+            ]
+        };
+        
+        $scope.myDataSourceSem2={
+            chart:{
+                caption:"Semester 2 Results",
+                subCaption:"Total Subjects = 6",
+                xAxisName: "subject name",
+                yAxisName: "% of marks",
+                theme:"fint"
+            },
+            data:[
+                {
+                    label:'subjectA',
+                    value:sem2.subjectA
+                },
+                {
+                    label:'subjectB',
+                    value:sem2.subjectB
+                },
+                {
+                    label:'subjectC',
+                    value:sem2.subjectC
+                },
+                {
+                    label:'subjectD',
+                    value:sem2.subjectD
+                },
+                {
+                    label:'subjectE',
+                    value:sem2.subjectE
+                },
+                {
+                    label:'subjectF',
+                    value:sem2.subjectF
+                }
+            ]
+        };
+        
+        $scope.myDataSourceSem3={
+            chart:{
+                caption:"Semester 3 Results",
+                subCaption:"Total Subjects = 6",
+                xAxisName: "subject name",
+                yAxisName: "% of marks",
+                theme:"fint"
+            },
+            data:[
+                {
+                    label:'subjectA',
+                    value:sem3.subjectA
+                },
+                {
+                    label:'subjectB',
+                    value:sem3.subjectB
+                },
+                {
+                    label:'subjectC',
+                    value:sem3.subjectC
+                },
+                {
+                    label:'subjectD',
+                    value:sem3.subjectD
+                },
+                {
+                    label:'subjectE',
+                    value:sem3.subjectE
+                },
+                {
+                    label:'subjectF',
+                    value:sem3.subjectF
+                }
+            ]
+        };
+        
+        $scope.myDataSourceSem4={
+            chart:{
+                caption:"Semester 4 Results",
+                subCaption:"Total Subjects = 6",
+                xAxisName: "subject name",
+                yAxisName: "% of marks",
+                theme:"fint"
+            },
+            data:[
+                {
+                    label:'subjectA',
+                    value:sem4.subjectA
+                },
+                {
+                    label:'subjectB',
+                    value:sem4.subjectB
+                },
+                {
+                    label:'subjectC',
+                    value:sem4.subjectC
+                },
+                {
+                    label:'subjectD',
+                    value:sem4.subjectD
+                },
+                {
+                    label:'subjectE',
+                    value:sem4.subjectE
+                },
+                {
+                    label:'subjectF',
+                    value:sem4.subjectF
+                }
+            ]
+        };
+        
+        $scope.myDataSourceSem5={
+            chart:{
+                caption:"Semester 5 Results",
+                subCaption:"Total Subjects = 6",
+                xAxisName: "subject name",
+                yAxisName: "% of marks",
+                theme:"fint"
+            },
+            data:[
+                {
+                    label:'subjectA',
+                    value:sem5.subjectA
+                },
+                {
+                    label:'subjectB',
+                    value:sem5.subjectB
+                },
+                {
+                    label:'subjectC',
+                    value:sem5.subjectC
+                },
+                {
+                    label:'subjectD',
+                    value:sem5.subjectD
+                },
+                {
+                    label:'subjectE',
+                    value:sem5.subjectE
+                },
+                {
+                    label:'subjectF',
+                    value:sem5.subjectF
+                }
+            ]
+        };
+        
+        $scope.myDataSourceSem6={
+            chart:{
+                caption:"Semester 6 Results",
+                subCaption:"Total Subjects = 6",
+                xAxisName: "subject name",
+                yAxisName: "% of marks",
+                theme:"fint"
+            },
+            data:[
+                {
+                    label:'subjectA',
+                    value:sem6.subjectA
+                },
+                {
+                    label:'subjectB',
+                    value:sem6.subjectB
+                },
+                {
+                    label:'subjectC',
+                    value:sem6.subjectC
+                },
+                {
+                    label:'subjectD',
+                    value:sem6.subjectD
+                },
+                {
+                    label:'subjectE',
+                    value:sem6.subjectE
+                },
+                {
+                    label:'subjectF',
+                    value:sem6.subjectF
+                }
+            ]
+        };
+        
+        $scope.myDataSourceSem7={
+            chart:{
+                caption:"Semester 7 Results",
+                subCaption:"Total Subjects = 6",
+                xAxisName: "subject name",
+                yAxisName: "% of marks",
+                theme:"fint"
+            },
+            data:[
+                {
+                    label:'subjectA',
+                    value:sem7.subjectA
+                },
+                {
+                    label:'subjectB',
+                    value:sem7.subjectB
+                },
+                {
+                    label:'subjectC',
+                    value:sem7.subjectC
+                },
+                {
+                    label:'subjectD',
+                    value:sem7.subjectD
+                },
+                {
+                    label:'subjectE',
+                    value:sem7.subjectE
+                },
+                {
+                    label:'subjectF',
+                    value:sem7.subjectF
+                }
+            ]
+        };
+        
+        $scope.myDataSourceSem8={
+            chart:{
+                caption:"Semester 8 Results",
+                subCaption:"Total Subjects = 6",
+                xAxisName: "subject name",
+                yAxisName: "% of marks",
+                theme:"fint"
+            },
+            data:[
+                {
+                    label:'subjectA',
+                    value:sem8.subjectA
+                },
+                {
+                    label:'subjectB',
+                    value:sem8.subjectB
+                },
+                {
+                    label:'subjectC',
+                    value:sem8.subjectC
+                },
+                {
+                    label:'subjectD',
+                    value:sem8.subjectD
+                },
+                {
+                    label:'subjectE',
+                    value:sem8.subjectE
+                },
+                {
+                    label:'subjectF',
+                    value:sem8.subjectF
+                }
+            ]
+        };
 
     },1000);//1 second
 
@@ -1263,6 +2000,10 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
     console.log('hello from myPredictorCtrl');
     $location.replace();
 
+    $scope.schoolLevel=true;
+    $scope.collegeLevel=true;
+    $scope.universityLevel=true;
+
     var uid=firebase.auth().currentUser.uid;//for getting uid
     
     var ref=firebase.database().ref().child('marksHistory').child(uid).child('class5');
@@ -1289,113 +2030,710 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
     
     var ref=firebase.database().ref().child('marksHistory').child(uid).child('class12');
     var obj12=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester1');
+    var sem1=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester2');
+    var sem2=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester3');
+    var sem3=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester4');
+    var sem4=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester5');
+    var sem5=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester6');
+    var sem6=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester7');
+    var sem7=$firebaseObject(ref);
+    
+    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester8');
+    var sem8=$firebaseObject(ref);
 
-    var english={
-        e5:obj5.english,
-        e5:obj6.english,
-        e5:obj7.english,
-        e5:obj8.english,
-        e5:obj9.english,
-        e5:obj10.english,
-        e5:obj11.english,
-        e5:obj12.english   
+    $scope.myDataSource5={
+        chart:{
+            caption:"Class 5 Results",
+            subCaption:"Total Subjects = 7",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:"english",
+                value:""+obj5.english
+            },
+            {
+                label:"urdu",
+                value:""+obj5.urdu
+            },
+            {
+                label:"maths",
+                value:""+obj5.maths
+            },
+            {
+                label:"pakistanStudies",
+                value:""+obj5.pakistanStudies
+            },
+            {
+                label:"science",
+                value:""+obj5.science
+            },
+            {
+                label:"islamiat",
+                value:""+obj5.islamiat
+            },
+            {
+                label:"computer",
+                value:""+obj5.computer
+            }
+        ]
     };
-    var urdu={
-        e5:obj5.urdu,
-        e5:obj6.urdu,
-        e5:obj7.urdu,
-        e5:obj8.urdu,
-        e5:obj9.urdu,
-        e5:obj10.urdu,
-        e5:obj11.urdu,
-        e5:obj12.urdu   
+    $scope.myDataSource6={
+        chart:{
+            caption:'Class 6 Results',
+            subCaption:'Total Subjects = 7',
+            xAxisName: "subject name",
+            yAxisName: '% of marks',
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'english',
+                value:String(obj6.english)
+            },
+            {
+                label:'urdu',
+                value:String(obj6.urdu)
+            },
+            {
+                label:'maths',
+                value:String(obj6.maths)
+            },
+            {
+                label:'pakistanStudies',
+                value:String(obj6.pakistanStudies)
+            },
+            {
+                label:'science',
+                value:String(obj6.science)
+            },
+            {
+                label:'islamiat',
+                value:String(obj6.islamiat)
+            },
+            {
+                label:'computer',
+                value:String(obj6.computer)
+            }
+        ]
     };
-    var maths={
-        e5:obj5.maths,
-        e5:obj6.maths,
-        e5:obj7.maths,
-        e5:obj8.maths,
-        e5:obj9.maths,
-        e5:obj10.maths,
-        e5:obj11.maths,
-        e5:obj12.maths   
+
+    // console.log($scope.myDataSource6);
+    // console.log(obj6);
+
+    $scope.myDataSource7={
+        chart:{
+            caption:'Class 7 Results',
+            subCaption:'Total Subjects = 7',
+            xAxisName: "subject name",
+            yAxisName: '% of marks',
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'english',
+                value:obj7.english
+            },
+            {
+                label:'urdu',
+                value:obj7.urdu
+            },
+            {
+                label:'maths',
+                value:obj7.maths
+            },
+            {
+                label:'pakistanStudies',
+                value:obj7.pakistanStudies
+            },
+            {
+                label:'science',
+                value:obj7.science
+            },
+            {
+                label:'islamiat',
+                value:obj7.islamiat
+            },
+            {
+                label:'computer',
+                value:obj7.computer
+            }
+        ]
     };
-    var science={
-        e5:obj5.science,
-        e5:obj6.science,
-        e5:obj7.science,
-        e5:obj8.science,
-        e5:obj9.science,
-        e5:obj10.science,
-        e5:obj11.science,
-        e5:obj12.science   
+    $scope.myDataSource8={
+        chart:{
+            caption:'Class 8 Results',
+            subCaption:'Total Subjects = 8',
+            xAxisName: "subject name",
+            yAxisName: '% of marks',
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'english',
+                value:obj8.english
+            },
+            {
+                label:'urdu',
+                value:obj8.urdu
+            },
+            {
+                label:'maths',
+                value:obj8.maths
+            },
+            {
+                label:'pakistanStudies',
+                value:obj8.pakistanStudies
+            },
+            {
+                label:'biology',
+                value:obj8.biology
+            },
+            {
+                label:'physics',
+                value:obj8.physics
+            },
+            {
+                label:'chemistry',
+                value:obj8.chemistry
+            },
+            {
+                label:'islamiat',
+                value:obj8.islamiat
+            },
+            {
+                label:'computer',
+                value:obj8.computer
+            }
+        ]
     };
-    var physics={
-        e5:obj5.physics,
-        e5:obj6.physics,
-        e5:obj7.physics,
-        e5:obj8.physics,
-        e5:obj9.physics,
-        e5:obj10.physics,
-        e5:obj11.physics,
-        e5:obj12.physics   
+    $scope.myDataSource9={
+        chart:{
+            caption:'Class 9 Results',
+            subCaption:'Total Subjects = 7',
+            xAxisName: "subject name",
+            yAxisName: '% of marks',
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'english',
+                value:obj9.english
+            },
+            {
+                label:'urdu',
+                value:obj9.urdu
+            },
+            {
+                label:'maths',
+                value:obj9.maths
+            },
+            {
+                label:'pakistanStudies',
+                value:obj9.pakistanStudies
+            },
+            {
+                label:'biology',
+                value:obj9.biology
+            },
+            {
+                label:'physics',
+                value:obj9.physics
+            },
+            {
+                label:'chemistry',
+                value:obj9.chemistry
+            },
+            {
+                label:'islamiat',
+                value:obj9.islamiat
+            },
+            {
+                label:'computer',
+                value:obj9.computer
+            }
+        ]
     };
-    var biology={
-        e5:obj5.biology,
-        e5:obj6.biology,
-        e5:obj7.biology,
-        e5:obj8.biology,
-        e5:obj9.biology,
-        e5:obj10.biology,
-        e5:obj11.biology,
-        e5:obj12.biology   
+    $scope.myDataSource10={
+        chart:{
+            caption:'Class 10 Results',
+            subCaption:'Total Subjects = 7',
+            xAxisName: "subject name",
+            yAxisName: '% of marks',
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'english',
+                value:obj10.english
+            },
+            {
+                label:'urdu',
+                value:obj10.urdu
+            },
+            {
+                label:'maths',
+                value:obj10.maths
+            },
+            {
+                label:'pakistanStudies',
+                value:obj10.pakistanStudies
+            },
+            {
+                label:'biology',
+                value:obj10.biology
+            },
+            {
+                label:'physics',
+                value:obj10.physics
+            },
+            {
+                label:'chemistry',
+                value:obj10.chemistry
+            },
+            {
+                label:'islamiat',
+                value:obj10.islamiat
+            },
+            {
+                label:'computer',
+                value:obj10.computer
+            }
+        ]
     };
-    var chemistry={
-        e5:obj5.chemistry,
-        e5:obj6.chemistry,
-        e5:obj7.chemistry,
-        e5:obj8.chemistry,
-        e5:obj9.chemistry,
-        e5:obj10.chemistry,
-        e5:obj11.chemistry,
-        e5:obj12.chemistry   
+    $scope.myDataSource11={
+        chart:{
+            caption:'Class 11 Results',
+            subCaption:'Total Subjects = 6',
+            xAxisName: "subject name",
+            yAxisName: '% of marks',
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'english',
+                value:obj11.english
+            },
+            {
+                label:'urdu',
+                value:obj11.urdu
+            },
+            {
+                label:'maths',
+                value:obj11.maths
+            },
+            {
+                label:'pakistanStudies',
+                value:obj11.pakistanStudies
+            },
+            {
+                label:'biology',
+                value:obj11.biology
+            },
+            {
+                label:'physics',
+                value:obj11.physics
+            },
+            {
+                label:'chemistry',
+                value:obj11.chemistry
+            },
+            {
+                label:'islamiat',
+                value:obj11.islamiat
+            },
+            {
+                label:'computer',
+                value:obj11.computer
+            }
+        ]
     };
-    var islamiat={
-        e5:obj5.islamiat,
-        e5:obj6.islamiat,
-        e5:obj7.islamiat,
-        e5:obj8.islamiat,
-        e5:obj9.islamiat,
-        e5:obj10.islamiat,
-        e5:obj11.islamiat,
-        e5:obj12.islamiat   
+    $scope.myDataSource12={
+        chart:{
+            caption:"Class 12 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'english',
+                value:obj12.english
+            },
+            {
+                label:'urdu',
+                value:obj12.urdu
+            },
+            {
+                label:'maths',
+                value:obj12.maths
+            },
+            {
+                label:'pakistanStudies',
+                value:obj12.pakistanStudies
+            },
+            {
+                label:'biology',
+                value:obj12.biology
+            },
+            {
+                label:'physics',
+                value:obj12.physics
+            },
+            {
+                label:'chemistry',
+                value:obj12.chemistry
+            },
+            {
+                label:'islamiat',
+                value:obj12.islamiat
+            },
+            {
+                label:'computer',
+                value:obj12.computer
+            }
+        ]
     };
-    var computer={
-        e5:obj5.computer,
-        e5:obj6.computer,
-        e5:obj7.computer,
-        e5:obj8.computer,
-        e5:obj9.computer,
-        e5:obj10.computer,
-        e5:obj11.computer,
-        e5:obj12.computer   
+    
+    $scope.myDataSourceSem1={
+        chart:{
+            caption:"Semester 1 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem1.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem1.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem1.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem1.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem1.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem1.subjectF
+            }
+        ]
     };
-    var pakistanStudies={
-        e5:obj5.pakistanStudies,
-        e5:obj6.pakistanStudies,
-        e5:obj7.pakistanStudies,
-        e5:obj8.pakistanStudies,
-        e5:obj9.pakistanStudies,
-        e5:obj10.pakistanStudies,
-        e5:obj11.pakistanStudies,
-        e5:obj12.pakistanStudies   
+    
+    $scope.myDataSourceSem2={
+        chart:{
+            caption:"Semester 2 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem2.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem2.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem2.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem2.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem2.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem2.subjectF
+            }
+        ]
     };
+    
+    $scope.myDataSourceSem3={
+        chart:{
+            caption:"Semester 3 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem3.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem3.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem3.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem3.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem3.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem3.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem4={
+        chart:{
+            caption:"Semester 4 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem4.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem4.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem4.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem4.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem4.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem4.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem5={
+        chart:{
+            caption:"Semester 5 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem5.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem5.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem5.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem5.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem5.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem5.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem6={
+        chart:{
+            caption:"Semester 6 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem6.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem6.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem6.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem6.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem6.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem6.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem7={
+        chart:{
+            caption:"Semester 7 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem7.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem7.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem7.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem7.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem7.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem7.subjectF
+            }
+        ]
+    };
+    
+    $scope.myDataSourceSem8={
+        chart:{
+            caption:"Semester 8 Results",
+            subCaption:"Total Subjects = 6",
+            xAxisName: "subject name",
+            yAxisName: "% of marks",
+            theme:"fint"
+        },
+        data:[
+            {
+                label:'subjectA',
+                value:sem8.subjectA
+            },
+            {
+                label:'subjectB',
+                value:sem8.subjectB
+            },
+            {
+                label:'subjectC',
+                value:sem8.subjectC
+            },
+            {
+                label:'subjectD',
+                value:sem8.subjectD
+            },
+            {
+                label:'subjectE',
+                value:sem8.subjectE
+            },
+            {
+                label:'subjectF',
+                value:sem8.subjectF
+            }
+        ]
+    };
+
+    
 
     $scope.predictMyResult=function(){
         console.log('selected level = ',$scope.selectedLevel);
+        console.log('selected class = ',$scope.selectedClass);
+        // console.clear();
+
+        var level=$scope.selectedLevel;
+        var classNo=$scope.selectedClass;
+
+        if(level==="university"){
+            if(classNo===1){
+                
+            }
+        }
+
     }
     
     $interval(function(){
+
+        if($scope.selectedLevel==="university"){
+            $scope.universityLevel=false;
+            $scope.schoolLevel=true;
+            $scope.collegeLevel=true;
+        }else if($scope.selectedLevel==="school"){
+            $scope.schoolLevel=false;
+            $scope.universityLevel=true;
+            $scope.collegeLevel=true;
+        }else if($scope.selectedLevel==="college"){
+            $scope.collegeLevel=false;
+            $scope.universityLevel=true;
+            $scope.schoolLevel=true;
+        }
+
         if(!statusLogin){
             // $location.path('/myProfile');
             myPath='/'
