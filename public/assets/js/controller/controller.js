@@ -2148,9 +2148,11 @@ app.controller('myProfileCtrl',function($rootScope,$scope,$location,$firebaseObj
     },1);
 });
 
-app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$interval){
+app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$interval,$http){
     console.log('hello from myPredictorCtrl');
     $location.replace();
+
+    $scope.outcomeHider=true;
 
     $scope.schoolLevel=true;
     $scope.collegeLevel=true;
@@ -2164,13 +2166,13 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
 
     var uid=firebase.auth().currentUser.uid;//for getting uid
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class5');
+    var ref5=firebase.database().ref().child('marksHistory').child(uid).child('class5');
     // var obj5=$firebaseObject(ref);//for converting firebase object to json
     // console.log(obj5);
     // $scope.obj5=obj5;
     // console.log($scope.obj5);
     var obj5=[];
-    ref.once('value',function(snapshot){
+    ref5.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
@@ -2198,16 +2200,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
     });
     // console.log('obj5='+obj5);
 
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class6');
+    var ref6=firebase.database().ref().child('marksHistory').child(uid).child('class6');
     // var obj6=$firebaseObject(ref);
     var obj6=[];
-    ref.once('value',function(snapshot){
+    ref6.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             obj6.push(item);
         });
-        obj6=snapshot.val();
+        // obj6=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(obj6===null){
             obj6=[0,0,0,0,0,0,0,0];
@@ -2228,16 +2230,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class7');
+    var ref7=firebase.database().ref().child('marksHistory').child(uid).child('class7');
     // var obj7=$firebaseObject(ref);
     var obj7=[];
-    ref.once('value',function(snapshot){
+    ref7.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             obj7.push(item);
         });
-        obj7=snapshot.val();
+        // obj7=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(obj7===null){
             obj7=[0,0,0,0,0,0,0,0];
@@ -2257,16 +2259,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class8');
+    var ref8=firebase.database().ref().child('marksHistory').child(uid).child('class8');
     // var obj8=$firebaseObject(ref);
     var obj8=[];
-    ref.once('value',function(snapshot){
+    ref8.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             obj8.push(item);
         });
-        obj8=snapshot.val();
+        // obj8=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(obj8===null){
             obj8=[0,0,0,0,0,0,0,0];
@@ -2288,16 +2290,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class9');
+    var ref9=firebase.database().ref().child('marksHistory').child(uid).child('class9');
     // var obj9=$firebaseObject(ref);
     var obj9=[];
-    ref.once('value',function(snapshot){
+    ref9.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             obj9.push(item);
         });
-        obj9=snapshot.val();
+        // obj9=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(obj9===null){
             obj9=[0,0,0,0,0,0,0,0];
@@ -2318,16 +2320,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
 
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class10');
+    var ref10=firebase.database().ref().child('marksHistory').child(uid).child('class10');
     // var obj10=$firebaseObject(ref);
     var obj10=[];
-    ref.once('value',function(snapshot){
+    ref10.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             obj10.push(item);
         });
-        obj10=snapshot.val();
+        // obj10=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(obj10===null){
             obj10=[0,0,0,0,0,0,0,0];
@@ -2347,16 +2349,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class11');
+    var ref11=firebase.database().ref().child('marksHistory').child(uid).child('class11');
     // var obj11=$firebaseObject(ref);
     var obj11=[];
-    ref.once('value',function(snapshot){
+    ref11.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             obj11.push(item);
         });
-        obj11=snapshot.val();
+        // obj11=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(obj11===null){
             obj11=[0,0,0,0,0,0,0];
@@ -2376,16 +2378,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('class12');
+    var ref12=firebase.database().ref().child('marksHistory').child(uid).child('class12');
     // var obj12=$firebaseObject(ref);
     var obj12=[];
-    ref.once('value',function(snapshot){
+    ref12.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             obj12.push(item);
         });
-        obj12=snapshot.val();
+        // obj12=snapshot.val();
         if(obj12===null){
             obj12=[0,0,0,0,0,0,0];
         }
@@ -2405,16 +2407,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester1');
+    var refSem1=firebase.database().ref().child('marksHistory').child(uid).child('semester1');
     // var sem1=$firebaseObject(ref);
     var sem1=[];
-    ref.once('value',function(snapshot){
+    refSem1.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             sem1.push(item);
         });
-        sem1=snapshot.val();
+        // sem1=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(sem1===null){
             sem1=[0,0,0,0,0,0];
@@ -2433,16 +2435,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester2');
+    var refSem2=firebase.database().ref().child('marksHistory').child(uid).child('semester2');
     // var sem2=$firebaseObject(ref);
     var sem2=[];
-    ref.once('value',function(snapshot){
+    refSem2.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             sem2.push(item);
         });
-        sem2=snapshot.val();
+        // sem2=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(sem2===null){
             sem2=[0,0,0,0,0,0];
@@ -2461,16 +2463,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester3');
+    var refSem3=firebase.database().ref().child('marksHistory').child(uid).child('semester3');
     // var sem3=$firebaseObject(ref);
     var sem3=[];
-    ref.once('value',function(snapshot){
+    refSem3.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             sem3.push(item);
         });
-        sem3=snapshot.val();
+        // sem3=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(sem3===null){
             sem3=[0,0,0,0,0,0];
@@ -2489,16 +2491,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester4');
+    var refSem4=firebase.database().ref().child('marksHistory').child(uid).child('semester4');
     // var sem4=$firebaseObject(ref);
     var sem4=[];
-    ref.once('value',function(snapshot){
+    refSem4.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             sem4.push(item);
         });
-        sem4=snapshot.val();
+        // sem4=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(sem4===null){
             sem4=[0,0,0,0,0,0];
@@ -2517,16 +2519,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester5');
+    var refSem5=firebase.database().ref().child('marksHistory').child(uid).child('semester5');
     // var sem5=$firebaseObject(ref);
     var sem5=[];
-    ref.once('value',function(snapshot){
+    refSem5.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             sem5.push(item);
         });
-        sem5=snapshot.val();
+        // sem5=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(sem5===null){
             sem5=[0,0,0,0,0,0];
@@ -2545,16 +2547,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester6');
+    var refSem6=firebase.database().ref().child('marksHistory').child(uid).child('semester6');
     // var sem6=$firebaseObject(ref);
     var sem6=[];
-    ref.once('value',function(snapshot){
+    refSem6.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             sem6.push(item);
         });
-        sem6=snapshot.val();
+        // sem6=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(sem6===null){
             sem6=[0,0,0,0,0,0];
@@ -2573,16 +2575,16 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         }
     });
     
-    var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester7');
+    var refSem7=firebase.database().ref().child('marksHistory').child(uid).child('semester7');
     // var sem7=$firebaseObject(ref);
     var sem7=[];
-    ref.once('value',function(snapshot){
+    refSem7.once('value',function(snapshot){
         // console.log(snapshot.val());
         snapshot.forEach(function(element) {
             var item=element.val();
             sem7.push(item);
         });
-        sem7=snapshot.val();
+        // sem7=snapshot.val();
         // console.log('obj5 = ',obj5);
         if(sem7===null){
             sem7=[0,0,0,0,0,0];
@@ -2634,6 +2636,7 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
 
 
     $scope.predictMyResult=function(){
+
         console.log('selected level = ',$scope.selectedLevel);
         console.log('selected class = ',$scope.selectedClass);
         // console.clear();
@@ -2641,12 +2644,38 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
         var level=$scope.selectedLevel;
         var classNo=$scope.selectedClass;
 
-        if(level==="university"){
-            if(classNo==="1"){
-                // console.log("% result of sem1 = "+resultOfSem1);
-                
-                console.log(myResultArr);
+        if(classNo>=9 && classNo<=12){
+            var data={
+                array:myResultArr,
+                targetClass:classNo-5
             }
+        }else{
+            var data={
+                array:myResultArr,
+                targetClass:parseInt(classNo)+7
+            }            
+        }
+
+        // console.log(myResultArr);
+        
+        if(level!=undefined || classNo!=undefined){
+            $http.post('/brainsJsPredicterApi',data).then(function(response){
+                console.log('posted successfully');
+                console.log('response.data.avg = ',response.data.avg);
+                
+                $scope.outcomeHider=false;
+                $scope.finalResult=response.data.avg;
+
+                if (level==='university'){
+                    $scope.finalResult='GPA : '+(response.data.avg)*(4)/100;
+                }
+
+    
+            }).catch(function(response){
+                console.log('error in posting');
+            });
+        }else{
+            alert('choose level of education and class first to perform prediction');
         }
 
     }
