@@ -1,6 +1,7 @@
 var app = angular.module('myApp',['ngRoute','firebase','ng-fusioncharts']);
 
 var statusLogin=false;//initial login token
+var newLogin=false;
 var logoutStatus=false;//initial logout token
 var myPath='/myProfile';//for passing initial value to $location.path(myPath)
 
@@ -75,7 +76,9 @@ app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval,$
                 
                 statusLogin=true;
                 logoutStatus=false;
+                newLogin=true;
                 console.log('user successfully logged in');
+                // $location.path('/myProfile');
             }
         }).catch(function(err){
             console.log(err);
@@ -87,8 +90,12 @@ app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval,$
         $interval(function(){//$interval(fn, delay, [count], [invokeApply], [Pass]);
             if(statusLogin){
                 // $location.path('/myProfile');
-                // myPath='/myProfile';
-                $location.path(myPath);
+                            // myPath='/myProfile';
+                if(newLogin){
+                    $location.path('/myProfile');
+                    newLogin=false
+                }
+                // $location.path(myPath);
                 // myPath='';
                 $rootScope.navVariable=false;
                 $scope.$apply;
@@ -205,6 +212,8 @@ app.controller('navCtrl',function($rootScope,$scope,$location,$interval){
         });
     };
 
+    
+
     $interval(function(){
 
         if(statusLogin){
@@ -256,13 +265,36 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
     $location.replace();
 
     var uid=firebase.auth().currentUser.uid;
+    // console.log(uid);
 
     $scope.class5MarksUpload=function(){
 
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('class5');
         var obj=$firebaseObject(ref);
 
-        // var marks={
+        if($scope.class5English!==undefined ){
+            ref.child('english').set($scope.class5English);
+        }
+        if($scope.class5Urdu!==undefined ){
+            ref.child('urdu').set($scope.class5Urdu);
+        }
+        if($scope.class5Maths!==undefined ){
+            ref.child('maths').set($scope.class5Maths);
+        }
+        if($scope.class5Science!==undefined ){
+            ref.child('science').set($scope.class5Science);
+        }
+        if($scope.class5Islamiat!==undefined ){
+            ref.child('islamiat').set($scope.class5Islamiat);
+        }
+        if($scope.class5Computer!==undefined ){
+            ref.child('computer').set($scope.class5Computer);
+        }
+        if($scope.class5Pkstd!==undefined ){
+            ref.child('pakistanStudies').set($scope.class5Pkstd);
+        }
+
+        // ref.set({
         //     english:$scope.class5English,
         //     urdu:$scope.class5Urdu,
         //     maths:$scope.class5Maths,
@@ -270,17 +302,7 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         //     islamiat:$scope.class5Islamiat,
         //     computer:$scope.class5Computer,
         //     pakistanStudies:$scope.class5Pkstd
-        // };
-
-        ref.set({
-            english:$scope.class5English,
-            urdu:$scope.class5Urdu,
-            maths:$scope.class5Maths,
-            science:$scope.class5Science,
-            islamiat:$scope.class5Islamiat,
-            computer:$scope.class5Computer,
-            pakistanStudies:$scope.class5Pkstd
-        });
+        // });
 
         alert('marks of class 5 has been updated successfully');
     }
@@ -290,15 +312,38 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('class6');
         var obj=$firebaseObject(ref);
 
-        ref.set({
-            english:$scope.class6English,
-            urdu:$scope.class6Urdu,
-            maths:$scope.class6Maths,
-            science:$scope.class6Science,
-            islamiat:$scope.class6Islamiat,
-            computer:$scope.class6Computer,
-            pakistanStudies:$scope.class6Pkstd
-        });
+        // ref.set({
+        //     english:$scope.class6English,
+        //     urdu:$scope.class6Urdu,
+        //     maths:$scope.class6Maths,
+        //     science:$scope.class6Science,
+        //     islamiat:$scope.class6Islamiat,
+        //     computer:$scope.class6Computer,
+        //     pakistanStudies:$scope.class6Pkstd
+        // });
+
+        
+        if($scope.class6English!==undefined ){
+            ref.child('english').set($scope.class6English);
+        }
+        if($scope.class6Urdu!==undefined ){
+            ref.child('urdu').set($scope.class6Urdu);
+        }
+        if($scope.class6Maths!==undefined ){
+            ref.child('maths').set($scope.class6Maths);
+        }
+        if($scope.class6Science!==undefined ){
+            ref.child('science').set($scope.class6Science);
+        }
+        if($scope.class6Islamiat!==undefined ){
+            ref.child('islamiat').set($scope.class6Islamiat);
+        }
+        if($scope.class6Computer!==undefined ){
+            ref.child('computer').set($scope.class6Computer);
+        }
+        if($scope.class6Pkstd!==undefined ){
+            ref.child('pakistanStudies').set($scope.class6Pkstd);
+        }
 
         alert('marks of class 6 has been updated successfully');
     }
@@ -308,15 +353,37 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('class7');
         var obj=$firebaseObject(ref);
 
-        ref.set({
-            english:$scope.class7English,
-            urdu:$scope.class7Urdu,
-            maths:$scope.class7Maths,
-            science:$scope.class7Science,
-            islamiat:$scope.class7Islamiat,
-            computer:$scope.class7Computer,
-            pakistanStudies:$scope.class7Pkstd
-        });
+        // ref.set({
+        //     english:$scope.class7English,
+        //     urdu:$scope.class7Urdu,
+        //     maths:$scope.class7Maths,
+        //     science:$scope.class7Science,
+        //     islamiat:$scope.class7Islamiat,
+        //     computer:$scope.class7Computer,
+        //     pakistanStudies:$scope.class7Pkstd
+        // });
+
+        if($scope.class7English!==undefined ){
+            ref.child('english').set($scope.class7English);
+        }
+        if($scope.class7Urdu!==undefined ){
+            ref.child('urdu').set($scope.class7Urdu);
+        }
+        if($scope.class7Maths!==undefined ){
+            ref.child('maths').set($scope.class7Maths);
+        }
+        if($scope.class7Science!==undefined ){
+            ref.child('science').set($scope.class7Science);
+        }
+        if($scope.class7Islamiat!==undefined ){
+            ref.child('islamiat').set($scope.class7Islamiat);
+        }
+        if($scope.class7Computer!==undefined ){
+            ref.child('computer').set($scope.class7Computer);
+        }
+        if($scope.class7Pkstd!==undefined ){
+            ref.child('pakistanStudies').set($scope.class7Pkstd);
+        }
 
         alert('marks of class 7 has been updated successfully');
     }
@@ -326,24 +393,53 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('class8');
         var obj=$firebaseObject(ref);
 
-        if($scope.class8Biology==='' || $scope.class8Biology=='' || $scope.class8Biology==null){
-            $scope.class8Biology='0';
-        }
-        if($scope.class8Computer==='' || $scope.class8Computer=='' || $scope.class8Computer==null){
-            $scope.class8Computer='0';
-        }
+        // if($scope.class8Biology==='' || $scope.class8Biology=='' || $scope.class8Biology==null){
+        //     $scope.class8Biology='0';
+        // }
+        // if($scope.class8Computer==='' || $scope.class8Computer=='' || $scope.class8Computer==null){
+        //     $scope.class8Computer='0';
+        // }
 
-        ref.set({
-            english:$scope.class8English,
-            urdu:$scope.class8Urdu,
-            maths:$scope.class8Maths,
-            biology:$scope.class8Biology,
-            physics:$scope.class8Physics,
-            chemistry:$scope.class8Chemistry,
-            islamiat:$scope.class8Islamiat,
-            computer:$scope.class8Computer,
-            pakistanStudies:$scope.class8Pkstd
-        });
+        // ref.set({
+        //     english:$scope.class8English,
+        //     urdu:$scope.class8Urdu,
+        //     maths:$scope.class8Maths,
+        //     biology:$scope.class8Biology,
+        //     physics:$scope.class8Physics,
+        //     chemistry:$scope.class8Chemistry,
+        //     islamiat:$scope.class8Islamiat,
+        //     computer:$scope.class8Computer,
+        //     pakistanStudies:$scope.class8Pkstd
+        // });
+
+
+        if($scope.class8English!==undefined ){
+            ref.child('english').set($scope.class8English);
+        }
+        if($scope.class8Urdu!==undefined ){
+            ref.child('urdu').set($scope.class8Urdu);
+        }
+        if($scope.class8Maths!==undefined ){
+            ref.child('maths').set($scope.class8Maths);
+        }
+        if($scope.class8Biology!==undefined ){
+            ref.child('biology').set($scope.class8Biology);
+        }
+        if($scope.class8Physics!==undefined ){
+            ref.child('physics').set($scope.class8Physics);
+        }
+        if($scope.class8Chemistry!==undefined ){
+            ref.child('chemistry').set($scope.class8Chemistry);
+        }
+        if($scope.class8Islamiat!==undefined ){
+            ref.child('islamiat').set($scope.class8Islamiat);
+        }
+        if($scope.class8Computer!==undefined ){
+            ref.child('computer').set($scope.class8Computer);
+        }
+        if($scope.class8Pkstd!==undefined ){
+            ref.child('pakistanStudies').set($scope.class8Pkstd);
+        }
 
         alert('marks of class 8 has been updated successfully');
     }
@@ -354,24 +450,52 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var obj=$firebaseObject(ref);
 
         
-        if($scope.class9Biology==='' || $scope.class9Biology=='' || $scope.class9Biology==null){
-            $scope.class9Biology='0';
-        }
-        if($scope.class9Computer==='' || $scope.class9Computer=='' || $scope.class9Computer==null){
-            $scope.class9Computer='0';
-        }
+        // if($scope.class9Biology==='' || $scope.class9Biology=='' || $scope.class9Biology==null){
+        //     $scope.class9Biology='0';
+        // }
+        // if($scope.class9Computer==='' || $scope.class9Computer=='' || $scope.class9Computer==null){
+        //     $scope.class9Computer='0';
+        // }
 
-        ref.set({
-            english:$scope.class9English,
-            urdu:$scope.class9Urdu,
-            maths:$scope.class9Maths,
-            biology:$scope.class9Biology,
-            physics:$scope.class9Physics,
-            chemistry:$scope.class9Chemistry,
-            islamiat:$scope.class9Islamiat,
-            computer:$scope.class9Computer,
-            pakistanStudies:$scope.class9Pkstd
-        });
+        // ref.set({
+        //     english:$scope.class9English,
+        //     urdu:$scope.class9Urdu,
+        //     maths:$scope.class9Maths,
+        //     biology:$scope.class9Biology,
+        //     physics:$scope.class9Physics,
+        //     chemistry:$scope.class9Chemistry,
+        //     islamiat:$scope.class9Islamiat,
+        //     computer:$scope.class9Computer,
+        //     pakistanStudies:$scope.class9Pkstd
+        // });
+        
+        if($scope.class9English!==undefined ){
+            ref.child('english').set($scope.class9English);
+        }
+        if($scope.class9Urdu!==undefined ){
+            ref.child('urdu').set($scope.class9Urdu);
+        }
+        if($scope.class9Maths!==undefined ){
+            ref.child('maths').set($scope.class9Maths);
+        }
+        if($scope.class9Biology!==undefined ){
+            ref.child('biology').set($scope.class9Biology);
+        }
+        if($scope.class9Physics!==undefined ){
+            ref.child('physics').set($scope.class9Physics);
+        }
+        if($scope.class9Chemistry!==undefined ){
+            ref.child('chemistry').set($scope.class9Chemistry);
+        }
+        if($scope.class9Islamiat!==undefined ){
+            ref.child('islamiat').set($scope.class9Islamiat);
+        }
+        if($scope.class9Computer!==undefined ){
+            ref.child('computer').set($scope.class9Computer);
+        }
+        if($scope.class9Pkstd!==undefined ){
+            ref.child('pakistanStudies').set($scope.class9Pkstd);
+        }
 
         alert('marks of class 9 has been updated successfully');
     }
@@ -382,24 +506,51 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var obj=$firebaseObject(ref);
 
         
-        if($scope.class10Biology==='' || $scope.class10Biology=='' || $scope.class10Biology==null){
-            $scope.class10Biology='0';
-        }
-        if($scope.class10Computer==='' || $scope.class10Computer=='' || $scope.class10Computer==null){
-            $scope.class10Computer='0';
-        }
+        // if($scope.class10Biology==='' || $scope.class10Biology=='' || $scope.class10Biology==null){
+        //     $scope.class10Biology='0';
+        // }
+        // if($scope.class10Computer==='' || $scope.class10Computer=='' || $scope.class10Computer==null){
+        //     $scope.class10Computer='0';
+        // }
 
-        ref.set({
-            english:$scope.class10English,
-            urdu:$scope.class10Urdu,
-            maths:$scope.class10Maths,
-            biology:$scope.class10Biology,
-            physics:$scope.class10Physics,
-            chemistry:$scope.class10Chemistry,
-            islamiat:$scope.class10Islamiat,
-            computer:$scope.class10Computer,
-            pakistanStudies:$scope.class10Pkstd
-        });
+        // ref.set({
+        //     english:$scope.class10English,
+        //     urdu:$scope.class10Urdu,
+        //     maths:$scope.class10Maths,
+        //     biology:$scope.class10Biology,
+        //     physics:$scope.class10Physics,
+        //     chemistry:$scope.class10Chemistry,
+        //     islamiat:$scope.class10Islamiat,
+        //     computer:$scope.class10Computer,
+        //     pakistanStudies:$scope.class10Pkstd
+        // });
+        if($scope.class10English!==undefined ){
+            ref.child('english').set($scope.class10English);
+        }
+        if($scope.class10Urdu!==undefined ){
+            ref.child('urdu').set($scope.class10Urdu);
+        }
+        if($scope.class10Maths!==undefined ){
+            ref.child('maths').set($scope.class10Maths);
+        }
+        if($scope.class10Biology!==undefined ){
+            ref.child('biology').set($scope.class10Biology);
+        }
+        if($scope.class10Physics!==undefined ){
+            ref.child('physics').set($scope.class10Physics);
+        }
+        if($scope.class10Chemistry!==undefined ){
+            ref.child('chemistry').set($scope.class10Chemistry);
+        }
+        if($scope.class10Islamiat!==undefined ){
+            ref.child('islamiat').set($scope.class10Islamiat);
+        }
+        if($scope.class10Computer!==undefined ){
+            ref.child('computer').set($scope.class10Computer);
+        }
+        if($scope.class10Pkstd!==undefined ){
+            ref.child('pakistanStudies').set($scope.class10Pkstd);
+        }
 
         alert('marks of class 10 has been updated successfully');
     }
@@ -410,27 +561,55 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var obj=$firebaseObject(ref);
 
         
-        if($scope.class11Biology==='' || $scope.class11Biology=='' || $scope.class11Biology==null){
-            $scope.class11Biology='0';
-        }
-        if($scope.class11Chemistry==='' || $scope.class11Chemistry=='' || $scope.class11Chemistry==null){
-            $scope.class11Chemistry='0';
-        }
-        if($scope.class11Computer==='' || $scope.class11Computer=='' || $scope.class11Computer==null){
-            $scope.class11Computer='0';
-        }
+        // if($scope.class11Biology==='' || $scope.class11Biology=='' || $scope.class11Biology==null){
+        //     $scope.class11Biology='0';
+        // }
+        // if($scope.class11Chemistry==='' || $scope.class11Chemistry=='' || $scope.class11Chemistry==null){
+        //     $scope.class11Chemistry='0';
+        // }
+        // if($scope.class11Computer==='' || $scope.class11Computer=='' || $scope.class11Computer==null){
+        //     $scope.class11Computer='0';
+        // }
 
-        ref.set({
-            english:$scope.class11English,
-            urdu:$scope.class11Urdu,
-            maths:$scope.class11Maths,
-            biology:$scope.class11Biology,
-            physics:$scope.class11Physics,
-            chemistry:$scope.class11Chemistry,
-            islamiat:$scope.class11Islamiat,
-            computer:$scope.class11Computer,
-            pakistanStudies:$scope.class11Pkstd
-        });
+        // ref.set({
+        //     english:$scope.class11English,
+        //     urdu:$scope.class11Urdu,
+        //     maths:$scope.class11Maths,
+        //     biology:$scope.class11Biology,
+        //     physics:$scope.class11Physics,
+        //     chemistry:$scope.class11Chemistry,
+        //     islamiat:$scope.class11Islamiat,
+        //     computer:$scope.class11Computer,
+        //     pakistanStudies:$scope.class11Pkstd
+        // });
+
+        if($scope.class11English!==undefined ){
+            ref.child('english').set($scope.class11English);
+        }
+        if($scope.class11Urdu!==undefined ){
+            ref.child('urdu').set($scope.class11Urdu);
+        }
+        if($scope.class11Maths!==undefined ){
+            ref.child('maths').set($scope.class11Maths);
+        }
+        if($scope.class11Biology!==undefined ){
+            ref.child('biology').set($scope.class11Biology);
+        }
+        if($scope.class11Physics!==undefined ){
+            ref.child('physics').set($scope.class11Physics);
+        }
+        if($scope.class11Chemistry!==undefined ){
+            ref.child('chemistry').set($scope.class11Chemistry);
+        }
+        if($scope.class11Islamiat!==undefined ){
+            ref.child('islamiat').set($scope.class11Islamiat);
+        }
+        if($scope.class11Computer!==undefined ){
+            ref.child('computer').set($scope.class11Computer);
+        }
+        if($scope.class11Pkstd!==undefined ){
+            ref.child('pakistanStudies').set($scope.class11Pkstd);
+        }
 
         alert('marks of class 11 has been updated successfully');
     }
@@ -441,27 +620,54 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var obj=$firebaseObject(ref);
 
         
-        if($scope.class12Biology==='' || $scope.class12Biology=='' || $scope.class12Biology==null){
-            $scope.class12Biology='0';
-        }
-        if($scope.class12Chemistry==='' || $scope.class12Chemistry=='' || $scope.class12Chemistry==null){
-            $scope.class12Chemistry='0';
-        }
-        if($scope.class12Computer==='' || $scope.class12Computer=='' || $scope.class12Computer==null){
-            $scope.class12Computer='0';
-        }
+        // if($scope.class12Biology==='' || $scope.class12Biology=='' || $scope.class12Biology==null){
+        //     $scope.class12Biology='0';
+        // }
+        // if($scope.class12Chemistry==='' || $scope.class12Chemistry=='' || $scope.class12Chemistry==null){
+        //     $scope.class12Chemistry='0';
+        // }
+        // if($scope.class12Computer==='' || $scope.class12Computer=='' || $scope.class12Computer==null){
+        //     $scope.class12Computer='0';
+        // }
 
-        ref.set({
-            english:$scope.class12English,
-            urdu:$scope.class12Urdu,
-            maths:$scope.class12Maths,
-            biology:$scope.class12Biology,
-            physics:$scope.class12Physics,
-            chemistry:$scope.class12Chemistry,
-            islamiat:$scope.class12Islamiat,
-            computer:$scope.class12Computer,
-            pakistanStudies:$scope.class12Pkstd
-        });
+        // ref.set({
+        //     english:$scope.class12English,
+        //     urdu:$scope.class12Urdu,
+        //     maths:$scope.class12Maths,
+        //     biology:$scope.class12Biology,
+        //     physics:$scope.class12Physics,
+        //     chemistry:$scope.class12Chemistry,
+        //     islamiat:$scope.class12Islamiat,
+        //     computer:$scope.class12Computer,
+        //     pakistanStudies:$scope.class12Pkstd
+        // });
+        if($scope.class12English!==undefined ){
+            ref.child('english').set($scope.class12English);
+        }
+        if($scope.class12Urdu!==undefined ){
+            ref.child('urdu').set($scope.class12Urdu);
+        }
+        if($scope.class12Maths!==undefined ){
+            ref.child('maths').set($scope.class12Maths);
+        }
+        if($scope.class12Biology!==undefined ){
+            ref.child('biology').set($scope.class12Biology);
+        }
+        if($scope.class12Physics!==undefined ){
+            ref.child('physics').set($scope.class12Physics);
+        }
+        if($scope.class12Chemistry!==undefined ){
+            ref.child('chemistry').set($scope.class12Chemistry);
+        }
+        if($scope.class12Islamiat!==undefined ){
+            ref.child('islamiat').set($scope.class12Islamiat);
+        }
+        if($scope.class12Computer!==undefined ){
+            ref.child('computer').set($scope.class12Computer);
+        }
+        if($scope.class12Pkstd!==undefined ){
+            ref.child('pakistanStudies').set($scope.class12Pkstd);
+        }
 
         alert('marks of class 12 has been updated successfully');
     }
@@ -472,33 +678,52 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester1');
         var obj=$firebaseObject(ref);
 
-        if($scope.subject11==='' || $scope.subject11=='' || $scope.subject11==null){
-            $scope.subject11='0';
-        }
-        if($scope.subject12==='' || $scope.subject12=='' || $scope.subject12==null){
-            $scope.subject11='0';
-        }
-        if($scope.subject13==='' || $scope.subject13=='' || $scope.subject13==null){
-            $scope.subject11='0';
-        }
-        if($scope.subject14==='' || $scope.subject14=='' || $scope.subject14==null){
-            $scope.subject11='0';
-        }
-        if($scope.subject15==='' || $scope.subject15=='' || $scope.subject15==null){
-            $scope.subject11='0';
-        }
-        if($scope.subject16==='' || $scope.subject16=='' || $scope.subject16==null){
-            $scope.subject11='0';
-        }
+        // if($scope.subject11==='' || $scope.subject11=='' || $scope.subject11==null){
+        //     $scope.subject11='0';
+        // }
+        // if($scope.subject12==='' || $scope.subject12=='' || $scope.subject12==null){
+        //     $scope.subject11='0';
+        // }
+        // if($scope.subject13==='' || $scope.subject13=='' || $scope.subject13==null){
+        //     $scope.subject11='0';
+        // }
+        // if($scope.subject14==='' || $scope.subject14=='' || $scope.subject14==null){
+        //     $scope.subject11='0';
+        // }
+        // if($scope.subject15==='' || $scope.subject15=='' || $scope.subject15==null){
+        //     $scope.subject11='0';
+        // }
+        // if($scope.subject16==='' || $scope.subject16=='' || $scope.subject16==null){
+        //     $scope.subject11='0';
+        // }
 
-        ref.set({
-            subjectA:$scope.subject11,
-            subjectB:$scope.subject12,
-            subjectC:$scope.subject13,
-            subjectD:$scope.subject14,
-            subjectE:$scope.subject15,
-            subjectF:$scope.subject16
-        });
+        // ref.set({
+        //     subjectA:$scope.subject11,
+        //     subjectB:$scope.subject12,
+        //     subjectC:$scope.subject13,
+        //     subjectD:$scope.subject14,
+        //     subjectE:$scope.subject15,
+        //     subjectF:$scope.subject16
+        // });
+        
+        if($scope.subject11!==undefined ){
+            ref.child('subjectA').set($scope.subject11);
+        }
+        if($scope.subject12!==undefined ){
+            ref.child('subjectB').set($scope.subject12);
+        }
+        if($scope.subject13!==undefined ){
+            ref.child('subjectC').set($scope.subject13);
+        }
+        if($scope.subject14!==undefined ){
+            ref.child('subjectD').set($scope.subject14);
+        }
+        if($scope.subject15!==undefined ){
+            ref.child('subjectE').set($scope.subject15);
+        }
+        if($scope.subject16!==undefined ){
+            ref.child('subjectF').set($scope.subject16);
+        }
 
         alert('marks of semester 1 has been updated successfully');
     }
@@ -508,33 +733,51 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester2');
         var obj=$firebaseObject(ref);
     
-        if($scope.subject21==='' || $scope.subject21=='' || $scope.subject21==null){
-            $scope.subject21='0';
-        }
-        if($scope.subject22==='' || $scope.subject22=='' || $scope.subject22==null){
-            $scope.subject22='0';
-        }
-        if($scope.subject23==='' || $scope.subject23=='' || $scope.subject23==null){
-            $scope.subject23='0';
-        }
-        if($scope.subject24==='' || $scope.subject24=='' || $scope.subject24==null){
-            $scope.subject24='0';
-        }
-        if($scope.subject25==='' || $scope.subject25=='' || $scope.subject25==null){
-            $scope.subject25='0';
-        }
-        if($scope.subject26==='' || $scope.subject26=='' || $scope.subject26==null){
-            $scope.subject26='0';
-        }
+        // if($scope.subject21==='' || $scope.subject21=='' || $scope.subject21==null){
+        //     $scope.subject21='0';
+        // }
+        // if($scope.subject22==='' || $scope.subject22=='' || $scope.subject22==null){
+        //     $scope.subject22='0';
+        // }
+        // if($scope.subject23==='' || $scope.subject23=='' || $scope.subject23==null){
+        //     $scope.subject23='0';
+        // }
+        // if($scope.subject24==='' || $scope.subject24=='' || $scope.subject24==null){
+        //     $scope.subject24='0';
+        // }
+        // if($scope.subject25==='' || $scope.subject25=='' || $scope.subject25==null){
+        //     $scope.subject25='0';
+        // }
+        // if($scope.subject26==='' || $scope.subject26=='' || $scope.subject26==null){
+        //     $scope.subject26='0';
+        // }
 
-        ref.set({
-            subjectA:$scope.subject21,
-            subjectB:$scope.subject22,
-            subjectC:$scope.subject23,
-            subjectD:$scope.subject24,
-            subjectE:$scope.subject25,
-            subjectF:$scope.subject26
-        });
+        // ref.set({
+        //     subjectA:$scope.subject21,
+        //     subjectB:$scope.subject22,
+        //     subjectC:$scope.subject23,
+        //     subjectD:$scope.subject24,
+        //     subjectE:$scope.subject25,
+        //     subjectF:$scope.subject26
+        // });
+        if($scope.subject21!==undefined ){
+            ref.child('subjectA').set($scope.subject21);
+        }
+        if($scope.subject22!==undefined ){
+            ref.child('subjectB').set($scope.subject22);
+        }
+        if($scope.subject23!==undefined ){
+            ref.child('subjectC').set($scope.subject23);
+        }
+        if($scope.subject24!==undefined ){
+            ref.child('subjectD').set($scope.subject24);
+        }
+        if($scope.subject25!==undefined ){
+            ref.child('subjectE').set($scope.subject25);
+        }
+        if($scope.subject26!==undefined ){
+            ref.child('subjectF').set($scope.subject26);
+        }
 
         alert('marks of semester 2 has been updated successfully');
     }
@@ -544,33 +787,51 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester3');
         var obj=$firebaseObject(ref);
         
-        if($scope.subject31==='' || $scope.subject31=='' || $scope.subject31==null){
-            $scope.subject31='0';
-        }
-        if($scope.subject32==='' || $scope.subject32=='' || $scope.subject32==null){
-            $scope.subject32='0';
-        }
-        if($scope.subject33==='' || $scope.subject33=='' || $scope.subject33==null){
-            $scope.subject33='0';
-        }
-        if($scope.subject34==='' || $scope.subject34=='' || $scope.subject34==null){
-            $scope.subject34='0';
-        }
-        if($scope.subject35==='' || $scope.subject35=='' || $scope.subject35==null){
-            $scope.subject35='0';
-        }
-        if($scope.subject36==='' || $scope.subject36=='' || $scope.subject36==null){
-            $scope.subject36='0';
-        }
+        // if($scope.subject31==='' || $scope.subject31=='' || $scope.subject31==null){
+        //     $scope.subject31='0';
+        // }
+        // if($scope.subject32==='' || $scope.subject32=='' || $scope.subject32==null){
+        //     $scope.subject32='0';
+        // }
+        // if($scope.subject33==='' || $scope.subject33=='' || $scope.subject33==null){
+        //     $scope.subject33='0';
+        // }
+        // if($scope.subject34==='' || $scope.subject34=='' || $scope.subject34==null){
+        //     $scope.subject34='0';
+        // }
+        // if($scope.subject35==='' || $scope.subject35=='' || $scope.subject35==null){
+        //     $scope.subject35='0';
+        // }
+        // if($scope.subject36==='' || $scope.subject36=='' || $scope.subject36==null){
+        //     $scope.subject36='0';
+        // }
 
-        ref.set({
-            subjectA:$scope.subject31,
-            subjectB:$scope.subject32,
-            subjectC:$scope.subject33,
-            subjectD:$scope.subject34,
-            subjectE:$scope.subject35,
-            subjectF:$scope.subject36
-        });
+        // ref.set({
+        //     subjectA:$scope.subject31,
+        //     subjectB:$scope.subject32,
+        //     subjectC:$scope.subject33,
+        //     subjectD:$scope.subject34,
+        //     subjectE:$scope.subject35,
+        //     subjectF:$scope.subject36
+        // });
+        if($scope.subject31!==undefined ){
+            ref.child('subjectA').set($scope.subject31);
+        }
+        if($scope.subject32!==undefined ){
+            ref.child('subjectB').set($scope.subject32);
+        }
+        if($scope.subject33!==undefined ){
+            ref.child('subjectC').set($scope.subject33);
+        }
+        if($scope.subject34!==undefined ){
+            ref.child('subjectD').set($scope.subject34);
+        }
+        if($scope.subject35!==undefined ){
+            ref.child('subjectE').set($scope.subject35);
+        }
+        if($scope.subject36!==undefined ){
+            ref.child('subjectF').set($scope.subject36);
+        }
 
         alert('marks of semester 3 has been updated successfully');
     }
@@ -580,33 +841,51 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester4');
         var obj=$firebaseObject(ref);
         
-        if($scope.subject41==='' || $scope.subject41=='' || $scope.subject41==null){
-            $scope.subject41='0';
-        }
-        if($scope.subject42==='' || $scope.subject42=='' || $scope.subject42==null){
-            $scope.subject42='0';
-        }
-        if($scope.subject43==='' || $scope.subject43=='' || $scope.subject43==null){
-            $scope.subject43='0';
-        }
-        if($scope.subject44==='' || $scope.subject44=='' || $scope.subject44==null){
-            $scope.subject44='0';
-        }
-        if($scope.subject45==='' || $scope.subject45=='' || $scope.subject45==null){
-            $scope.subject45='0';
-        }
-        if($scope.subject46==='' || $scope.subject46=='' || $scope.subject46==null){
-            $scope.subject46='0';
-        }
+        // if($scope.subject41==='' || $scope.subject41=='' || $scope.subject41==null){
+        //     $scope.subject41='0';
+        // }
+        // if($scope.subject42==='' || $scope.subject42=='' || $scope.subject42==null){
+        //     $scope.subject42='0';
+        // }
+        // if($scope.subject43==='' || $scope.subject43=='' || $scope.subject43==null){
+        //     $scope.subject43='0';
+        // }
+        // if($scope.subject44==='' || $scope.subject44=='' || $scope.subject44==null){
+        //     $scope.subject44='0';
+        // }
+        // if($scope.subject45==='' || $scope.subject45=='' || $scope.subject45==null){
+        //     $scope.subject45='0';
+        // }
+        // if($scope.subject46==='' || $scope.subject46=='' || $scope.subject46==null){
+        //     $scope.subject46='0';
+        // }
 
-        ref.set({
-            subjectA:$scope.subject41,
-            subjectB:$scope.subject42,
-            subjectC:$scope.subject43,
-            subjectD:$scope.subject44,
-            subjectE:$scope.subject45,
-            subjectF:$scope.subject46
-        });
+        // ref.set({
+        //     subjectA:$scope.subject41,
+        //     subjectB:$scope.subject42,
+        //     subjectC:$scope.subject43,
+        //     subjectD:$scope.subject44,
+        //     subjectE:$scope.subject45,
+        //     subjectF:$scope.subject46
+        // });
+        if($scope.subject41!==undefined ){
+            ref.child('subjectA').set($scope.subject41);
+        }
+        if($scope.subject42!==undefined ){
+            ref.child('subjectB').set($scope.subject42);
+        }
+        if($scope.subject43!==undefined ){
+            ref.child('subjectC').set($scope.subject43);
+        }
+        if($scope.subject44!==undefined ){
+            ref.child('subjectD').set($scope.subject44);
+        }
+        if($scope.subject45!==undefined ){
+            ref.child('subjectE').set($scope.subject45);
+        }
+        if($scope.subject46!==undefined ){
+            ref.child('subjectF').set($scope.subject46);
+        }
 
         alert('marks of semester 4 has been updated successfully');
     }
@@ -616,33 +895,51 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester5');
         var obj=$firebaseObject(ref);
         
-        if($scope.subject51==='' || $scope.subject51=='' || $scope.subject51==null){
-            $scope.subject51='0';
-        }
-        if($scope.subject52==='' || $scope.subject52=='' || $scope.subject52==null){
-            $scope.subject52='0';
-        }
-        if($scope.subject53==='' || $scope.subject53=='' || $scope.subject53==null){
-            $scope.subject53='0';
-        }
-        if($scope.subject54==='' || $scope.subject54=='' || $scope.subject54==null){
-            $scope.subject54='0';
-        }
-        if($scope.subject55==='' || $scope.subject55=='' || $scope.subject55==null){
-            $scope.subject55='0';
-        }
-        if($scope.subject56==='' || $scope.subject56=='' || $scope.subject56==null){
-            $scope.subject56='0';
-        }
+        // if($scope.subject51==='' || $scope.subject51=='' || $scope.subject51==null){
+        //     $scope.subject51='0';
+        // }
+        // if($scope.subject52==='' || $scope.subject52=='' || $scope.subject52==null){
+        //     $scope.subject52='0';
+        // }
+        // if($scope.subject53==='' || $scope.subject53=='' || $scope.subject53==null){
+        //     $scope.subject53='0';
+        // }
+        // if($scope.subject54==='' || $scope.subject54=='' || $scope.subject54==null){
+        //     $scope.subject54='0';
+        // }
+        // if($scope.subject55==='' || $scope.subject55=='' || $scope.subject55==null){
+        //     $scope.subject55='0';
+        // }
+        // if($scope.subject56==='' || $scope.subject56=='' || $scope.subject56==null){
+        //     $scope.subject56='0';
+        // }
 
-        ref.set({
-            subjectA:$scope.subject51,
-            subjectB:$scope.subject52,
-            subjectC:$scope.subject53,
-            subjectD:$scope.subject54,
-            subjectE:$scope.subject55,
-            subjectF:$scope.subject56
-        });
+        // ref.set({
+        //     subjectA:$scope.subject51,
+        //     subjectB:$scope.subject52,
+        //     subjectC:$scope.subject53,
+        //     subjectD:$scope.subject54,
+        //     subjectE:$scope.subject55,
+        //     subjectF:$scope.subject56
+        // });
+        if($scope.subject51!==undefined ){
+            ref.child('subjectA').set($scope.subject51);
+        }
+        if($scope.subject52!==undefined ){
+            ref.child('subjectB').set($scope.subject52);
+        }
+        if($scope.subject53!==undefined ){
+            ref.child('subjectC').set($scope.subject53);
+        }
+        if($scope.subject54!==undefined ){
+            ref.child('subjectD').set($scope.subject54);
+        }
+        if($scope.subject55!==undefined ){
+            ref.child('subjectE').set($scope.subject55);
+        }
+        if($scope.subject56!==undefined ){
+            ref.child('subjectF').set($scope.subject56);
+        }
 
         alert('marks of semester 5 has been updated successfully');
     }
@@ -652,33 +949,51 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester6');
         var obj=$firebaseObject(ref);
         
-        if($scope.subject61==='' || $scope.subject61=='' || $scope.subject61==null){
-            $scope.subject61='0';
-        }
-        if($scope.subject62==='' || $scope.subject62=='' || $scope.subject62==null){
-            $scope.subject62='0';
-        }
-        if($scope.subject63==='' || $scope.subject63=='' || $scope.subject63==null){
-            $scope.subject63='0';
-        }
-        if($scope.subject64==='' || $scope.subject64=='' || $scope.subject64==null){
-            $scope.subject64='0';
-        }
-        if($scope.subject65==='' || $scope.subject65=='' || $scope.subject65==null){
-            $scope.subject65='0';
-        }
-        if($scope.subject66==='' || $scope.subject66=='' || $scope.subject66==null){
-            $scope.subject66='0';
-        }
+        // if($scope.subject61==='' || $scope.subject61=='' || $scope.subject61==null){
+        //     $scope.subject61='0';
+        // }
+        // if($scope.subject62==='' || $scope.subject62=='' || $scope.subject62==null){
+        //     $scope.subject62='0';
+        // }
+        // if($scope.subject63==='' || $scope.subject63=='' || $scope.subject63==null){
+        //     $scope.subject63='0';
+        // }
+        // if($scope.subject64==='' || $scope.subject64=='' || $scope.subject64==null){
+        //     $scope.subject64='0';
+        // }
+        // if($scope.subject65==='' || $scope.subject65=='' || $scope.subject65==null){
+        //     $scope.subject65='0';
+        // }
+        // if($scope.subject66==='' || $scope.subject66=='' || $scope.subject66==null){
+        //     $scope.subject66='0';
+        // }
 
-        ref.set({
-            subjectA:$scope.subject61,
-            subjectB:$scope.subject62,
-            subjectC:$scope.subject63,
-            subjectD:$scope.subject64,
-            subjectE:$scope.subject65,
-            subjectF:$scope.subject66
-        });
+        // ref.set({
+        //     subjectA:$scope.subject61,
+        //     subjectB:$scope.subject62,
+        //     subjectC:$scope.subject63,
+        //     subjectD:$scope.subject64,
+        //     subjectE:$scope.subject65,
+        //     subjectF:$scope.subject66
+        // });
+        if($scope.subject61!==undefined ){
+            ref.child('subjectA').set($scope.subject61);
+        }
+        if($scope.subject62!==undefined ){
+            ref.child('subjectB').set($scope.subject62);
+        }
+        if($scope.subject63!==undefined ){
+            ref.child('subjectC').set($scope.subject63);
+        }
+        if($scope.subject64!==undefined ){
+            ref.child('subjectD').set($scope.subject64);
+        }
+        if($scope.subject65!==undefined ){
+            ref.child('subjectE').set($scope.subject65);
+        }
+        if($scope.subject66!==undefined ){
+            ref.child('subjectF').set($scope.subject66);
+        }
 
         alert('marks of semester 6 has been updated successfully');
     }
@@ -688,33 +1003,51 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester7');
         var obj=$firebaseObject(ref);
         
-        if($scope.subject71==='' || $scope.subject71=='' || $scope.subject71==null){
-            $scope.subject71='0';
-        }
-        if($scope.subject72==='' || $scope.subject72=='' || $scope.subject72==null){
-            $scope.subject72='0';
-        }
-        if($scope.subject73==='' || $scope.subject73=='' || $scope.subject73==null){
-            $scope.subject73='0';
-        }
-        if($scope.subject74==='' || $scope.subject74=='' || $scope.subject74==null){
-            $scope.subject74='0';
-        }
-        if($scope.subject75==='' || $scope.subject75=='' || $scope.subject75==null){
-            $scope.subject75='0';
-        }
-        if($scope.subject76==='' || $scope.subject76=='' || $scope.subject76==null){
-            $scope.subject76='0';
-        }
+        // if($scope.subject71==='' || $scope.subject71=='' || $scope.subject71==null){
+        //     $scope.subject71='0';
+        // }
+        // if($scope.subject72==='' || $scope.subject72=='' || $scope.subject72==null){
+        //     $scope.subject72='0';
+        // }
+        // if($scope.subject73==='' || $scope.subject73=='' || $scope.subject73==null){
+        //     $scope.subject73='0';
+        // }
+        // if($scope.subject74==='' || $scope.subject74=='' || $scope.subject74==null){
+        //     $scope.subject74='0';
+        // }
+        // if($scope.subject75==='' || $scope.subject75=='' || $scope.subject75==null){
+        //     $scope.subject75='0';
+        // }
+        // if($scope.subject76==='' || $scope.subject76=='' || $scope.subject76==null){
+        //     $scope.subject76='0';
+        // }
 
-        ref.set({
-            subjectA:$scope.subject71,
-            subjectB:$scope.subject72,
-            subjectC:$scope.subject73,
-            subjectD:$scope.subject74,
-            subjectE:$scope.subject75,
-            subjectF:$scope.subject76
-        });
+        // ref.set({
+        //     subjectA:$scope.subject71,
+        //     subjectB:$scope.subject72,
+        //     subjectC:$scope.subject73,
+        //     subjectD:$scope.subject74,
+        //     subjectE:$scope.subject75,
+        //     subjectF:$scope.subject76
+        // });
+        if($scope.subject71!==undefined ){
+            ref.child('subjectA').set($scope.subject71);
+        }
+        if($scope.subject72!==undefined ){
+            ref.child('subjectB').set($scope.subject72);
+        }
+        if($scope.subject73!==undefined ){
+            ref.child('subjectC').set($scope.subject73);
+        }
+        if($scope.subject74!==undefined ){
+            ref.child('subjectD').set($scope.subject74);
+        }
+        if($scope.subject75!==undefined ){
+            ref.child('subjectE').set($scope.subject75);
+        }
+        if($scope.subject76!==undefined ){
+            ref.child('subjectF').set($scope.subject76);
+        }
 
         alert('marks of semester 7 has been updated successfully');
     }
@@ -724,33 +1057,51 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         var ref=firebase.database().ref().child('marksHistory').child(uid).child('semester8');
         var obj=$firebaseObject(ref);
         
-        if($scope.subject81==='' || $scope.subject81=='' || $scope.subject81==null){
-            $scope.subject81='0';
-        }
-        if($scope.subject82==='' || $scope.subject82=='' || $scope.subject82==null){
-            $scope.subject82='0';
-        }
-        if($scope.subject83==='' || $scope.subject83=='' || $scope.subject83==null){
-            $scope.subject83='0';
-        }
-        if($scope.subject84==='' || $scope.subject84=='' || $scope.subject84==null){
-            $scope.subject84='0';
-        }
-        if($scope.subject85==='' || $scope.subject85=='' || $scope.subject85==null){
-            $scope.subject85='0';
-        }
-        if($scope.subject86==='' || $scope.subject86=='' || $scope.subject86==null){
-            $scope.subject86='0';
-        }
+        // if($scope.subject81==='' || $scope.subject81=='' || $scope.subject81==null){
+        //     $scope.subject81='0';
+        // }
+        // if($scope.subject82==='' || $scope.subject82=='' || $scope.subject82==null){
+        //     $scope.subject82='0';
+        // }
+        // if($scope.subject83==='' || $scope.subject83=='' || $scope.subject83==null){
+        //     $scope.subject83='0';
+        // }
+        // if($scope.subject84==='' || $scope.subject84=='' || $scope.subject84==null){
+        //     $scope.subject84='0';
+        // }
+        // if($scope.subject85==='' || $scope.subject85=='' || $scope.subject85==null){
+        //     $scope.subject85='0';
+        // }
+        // if($scope.subject86==='' || $scope.subject86=='' || $scope.subject86==null){
+        //     $scope.subject86='0';
+        // }
 
-        ref.set({
-            subjectA:$scope.subject81,
-            subjectB:$scope.subject82,
-            subjectC:$scope.subject83,
-            subjectD:$scope.subject84,
-            subjectE:$scope.subject85,
-            subjectF:$scope.subject86
-        });
+        // ref.set({
+        //     subjectA:$scope.subject81,
+        //     subjectB:$scope.subject82,
+        //     subjectC:$scope.subject83,
+        //     subjectD:$scope.subject84,
+        //     subjectE:$scope.subject85,
+        //     subjectF:$scope.subject86
+        // });
+        if($scope.subject81!==undefined ){
+            ref.child('subjectA').set($scope.subject81);
+        }
+        if($scope.subject82!==undefined ){
+            ref.child('subjectB').set($scope.subject82);
+        }
+        if($scope.subject83!==undefined ){
+            ref.child('subjectC').set($scope.subject83);
+        }
+        if($scope.subject84!==undefined ){
+            ref.child('subjectD').set($scope.subject84);
+        }
+        if($scope.subject85!==undefined ){
+            ref.child('subjectE').set($scope.subject85);
+        }
+        if($scope.subject86!==undefined ){
+            ref.child('subjectF').set($scope.subject86);
+        }
 
         alert('marks of semester 8 has been updated successfully');
     }
