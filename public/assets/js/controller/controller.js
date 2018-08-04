@@ -93,19 +93,35 @@ app.controller('loginCtrl',function($scope,$location,$firebaseObject,$interval,$
                             // myPath='/myProfile';
                 if(newLogin){
                     $location.path('/myProfile');
-                    newLogin=false
+                    newLogin=false;
+                    $rootScope.navVariable=false;
                 }
                 // $location.path(myPath);
                 // myPath='';
-                $rootScope.navVariable=false;
                 $scope.$apply;
             }
+
+            // else if(!statusLogin && logoutStatus){
+            //     // logoutStatus=false;
+            //     $scope.navVariable=true;
+            //     myPath='/';
+            //     logoutStatus=false;
+            //     statusLogin=false;
+            //     // $location.path('/login');
+            //     $location.path(myPath);
+            //     $location.replace();//for setting the current url to stop user from 
+            //                         //going back to app after logout
+            // }
+
         },1);
     }
 });
 
 app.controller('registerCtrl',function($scope,$location,$firebaseObject){
     console.log('hello from regCtrl controller');
+
+    $location.path();
+    $location.replace();
    
     var ref=firebase.database().ref().child('users');
     var obj=$firebaseObject(ref);
@@ -206,21 +222,20 @@ app.controller('navCtrl',function($rootScope,$scope,$location,$interval){
         firebase.auth().signOut().then(function(){
             statusLogin=false;
             logoutStatus=true;
+            $scope.navVariable=true;
+
         }).catch(function(err){
             console.log(err);
             alert(err.message);
         });
     };
 
-    
-
     $interval(function(){
 
         if(statusLogin){
             $scope.navVariable=false; //{{ng-hide=false}}
         }
-
-        if(!statusLogin && logoutStatus){
+        else if(!statusLogin && logoutStatus){
             // logoutStatus=false;
             $scope.navVariable=true;
             myPath='/';
@@ -231,6 +246,8 @@ app.controller('navCtrl',function($rootScope,$scope,$location,$interval){
             $location.replace();//for setting the current url to stop user from 
                                 //going back to app after logout
         }
+
+
     },1);
 
 
@@ -1106,15 +1123,15 @@ app.controller('myHistoryCtrl',function($scope,$location,$firebaseObject,$interv
         alert('marks of semester 8 has been updated successfully');
     }
     
-    $interval(function(){
-        if(!statusLogin){
-            // $location.path('/myProfile');
-            myPath='/'
-            $location.path(myPath);
-            $location.replace();
-            $scope.$apply;
-        }
-    },1);
+    // $interval(function(){
+    //     if(!statusLogin){
+    //         // $location.path('/myProfile');
+    //         myPath='/'
+    //         $location.path(myPath);
+    //         $location.replace();
+    //         $scope.$apply;
+    //     }
+    // },1);
 });
 
 app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$firebaseArray,$interval){
@@ -2465,15 +2482,15 @@ app.controller('myAnalyticsCtrl',function($scope,$location,$firebaseObject,$fire
 
     },1000);//1 second
 
-    $interval(function(){
-        if(!statusLogin ){
-            // $location.path('/myProfile');
-            myPath='/'
-            $location.path(myPath);
-            $location.replace();
-            $scope.$apply;
-        }
-    },1);
+    // $interval(function(){
+    //     if(!statusLogin ){
+    //         // $location.path('/myProfile');
+    //         myPath='/'
+    //         $location.path(myPath);
+    //         $location.replace();
+    //         $scope.$apply;
+    //     }
+    // },1);
 });
 
 app.controller('myProfileCtrl',function($rootScope,$scope,$location,$firebaseObject,$interval){
@@ -2490,11 +2507,7 @@ app.controller('myProfileCtrl',function($rootScope,$scope,$location,$firebaseObj
     
     $interval(function(){
         if(!statusLogin){
-            // $location.path('/myProfile');
-            myPath='/'
-            $location.path(myPath);
-            $location.replace();
-            $scope.$apply;
+            $rootScope.navVariable=false;
         }
     },1);
 });
@@ -3038,22 +3051,17 @@ app.controller('myPredictorCtrl',function($scope,$location,$firebaseObject,$inte
             $scope.universityLevel=false;
             $scope.schoolLevel=true;
             $scope.collegeLevel=true;
+            $scope.classType='Select Semester';
         }else if($scope.selectedLevel==="school"){
             $scope.schoolLevel=false;
             $scope.universityLevel=true;
             $scope.collegeLevel=true;
+            $scope.classType='Select Class';
         }else if($scope.selectedLevel==="college"){
             $scope.collegeLevel=false;
             $scope.universityLevel=true;
             $scope.schoolLevel=true;
-        }
-
-        if(!statusLogin){
-            // $location.path('/myProfile');
-            myPath='/'
-            $location.path(myPath);
-            $location.replace();
-            $scope.$apply;
+            $scope.classType='Select Class';
         }
     },1);
 
